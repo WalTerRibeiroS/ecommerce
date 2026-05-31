@@ -1,0 +1,85 @@
+import pool from "../../config/db.js"
+
+export const produtoTodos = async() => {
+    const result = await pool.query(
+        "SELECT * FROM usuarios"
+    )
+    return result.rows
+}
+
+export const produtoPorId = async(id) => {
+    const result = await pool.query(
+        "SELECT * FROM usuarios WHERE id=$1",
+        [id]
+    )
+    return result.rows[0]
+}
+
+export const criarProduto = async(nome, descricao, preco, desconto_percentual, quantidade_disponivel, slug, frete) => {
+    const result = await pool.query(
+        "INSERT INTO produtos (nome, descricao, preco, desconto_percentual, quantidade_disponivel, slug, frete) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *",
+        [nome, descricao, preco, desconto_percentual, quantidade_disponivel, slug, frete]
+    )
+    return result.rows[0]
+}
+
+export const atualizarProduto = async (campos,valores) => {
+
+    const query = `UPDATE produtos SET ${campos.join(", ")}, updated_at = NOW() WHERE id = $${valores.length} RETURNING *`// .join transforma um array em string, + adiciona um separador, nesse caso ","
+
+    //id em valores.length pq o id é sempre o ultimo ent funfa por isso $n 
+
+    const result = await pool.query(query, valores)//pega a query montada com os $ certinho e substitui pelos valores do array de valores
+
+    return result.rows[0]
+}
+
+export const produtosDestaque = async () => {
+    const sql = `
+        SELECT
+            p.id,
+            p.nome,
+            p.preco,
+            p.desconto_percentual,
+            p.frete,
+            (
+                SELECT i.imagem_path
+                FROM imagens_produtos i
+                WHERE i.id_produto = p.id
+                ORDER BY i.id
+                LIMIT 1
+            ) AS imagem_path
+        FROM produtos p
+        ORDER BY RANDOM()
+        LIMIT 9
+    `;
+
+    const result = await pool.query(sql)
+
+    return result.rows
+}
+
+export const atualizarTodoOProduto = async(id, nome, descricao, preco, desconto_percentual, quantidade_disponivel, slug, frete) => {
+        const result = await pool.query(
+        "UPDATE produtos SET nome = $1,descricao = $2,preco = $3,desconto_percentual = $4,quantidade_disponivel = $5,slug = $6,frete = $7, updated_at = NOW() WHERE id = $8 RETURNING *",
+        [nome, descricao, preco, desconto_percentual, quantidade_disponivel, slug, frete, id]
+    )
+    return result.rows[0]
+}
+
+export const deletarProduto = async(id) => {
+    const result = await pool.query(
+        "DELETE FROM produtos WHERE id = $1 RETURNING id",
+        [id]
+    )
+    return result.rows[0]
+}
+
+
+/* export const getProdutoPorNomeOuSlug = async (nome, slug) => {
+    const result = await pool.query(
+        "SELECT * FROM produtos WHERE nome=$1 OR slug=$2",
+        [nome, slug]
+    )
+    return result.rows[0]
+} */

@@ -1,0 +1,122 @@
+.navbar {
+    min-width: 100%;
+    
+    min-height: clamp(4rem, 1.5rem + 4vw, 5rem);
+
+    background-color: hsl(189, 69%, 54%);
+
+    z-index: 0;
+    position: sticky;/* aqui ver */
+    box-shadow: 0 8px 8px rgba(0,0,0,0.08);
+}
+
+.navbar-wrapper {
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+    justify-items: center;
+    justify-content: space-between;
+    
+    width: 100%;
+    max-width: 1200px;
+
+    margin-inline: auto;
+    padding-inline: clamp(0.8rem, 2vw, 2rem);
+    padding: clamp(1.0rem, 1rem + 1.5vw, 2rem); 
+}
+
+.barra-de-pesquisa {
+    background-color: rgb(255, 255, 255);
+    padding: 8px 12px;
+    padding-right: 25px;
+    outline: none;
+    min-width: 50%;
+    border-radius: 4px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+}
+
+.barra-de-pesquisa i {
+    background-color: rgb(255, 255, 255);
+}
+
+.textoInput{
+    background-color: transparent;
+    border: none;
+    color: rgb(0, 0, 0);
+    font-size:clamp(1.0rem, 1rem + 1.2vw, 1.5rem);
+    min-width: 100%;
+}
+
+.textoInput:focus-visible {
+    outline: none;
+}
+
+.nav-componentes {
+    list-style: none;
+}
+
+.nav-componentes li {
+    display: inline-block;
+    padding: 0 clamp(0.80rem, 0.70rem + 0.50vw, 1rem);;
+
+    font-size: clamp(0.80rem, 1rem + 1.2vw, 1.5rem);
+}
+
+.nav-componentes li a:hover {
+    text-decoration: underline;
+}
+
+.texto-carrinho {
+    display: none
+}
+
+@media (max-width: 1279px) {
+    .nav-componentes li {
+    font-size: 1.5rem
+}
+    .barra-de-pesquisa {
+    min-width: 40%;
+}
+}
+
+@media (max-width: 1000px) {
+    .textoInput{
+    font-size: 1.0rem;
+}
+    .barra-de-pesquisa {
+    min-width: 30%;
+}
+    .nav-componentes li {
+    font-size: 1.0rem
+}
+}
+
+@media (max-width: 740px) {
+    .compras,
+    .produtos {
+        display: none !important;
+    }
+    .barra-de-pesquisa {
+    min-width: 10%;
+    }
+    .texto-carrinho {
+        display: inline-block;
+    }
+}
+
+@media (max-width: 490px) {
+    .texto-carrinho {
+        display: none;
+    }
+    .texto-login {
+        display: none;
+    }
+    .nav-componentes li {
+    font-size: 1.2rem
+    }
+}

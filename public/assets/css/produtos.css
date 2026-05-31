@@ -1,0 +1,23 @@
+.products-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fit, minmax(250px, 1fr));
+
+  gap: 1.5rem;
+}
+
+/* 
+minmax(250px, 1fr)
+
+Cada card:
+
+nunca menor que 250px
+pode crescer
+auto-fit
+
+O navegador automaticamente decide:
+
+quantas colunas cabem
+quando quebrar linha
+ */
