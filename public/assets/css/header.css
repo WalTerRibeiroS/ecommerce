@@ -5,7 +5,7 @@
 
     background-color: hsl(189, 69%, 54%);
 
-    z-index: 0;
+    z-index: 1;
     position: sticky;/* aqui ver */
     box-shadow: 0 8px 8px rgba(0,0,0,0.08);
 }
@@ -75,6 +75,57 @@
     display: none
 }
 
+/* =============================
+    MENU SIDEBAR MOBILE
+================================*/
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100dvh;
+    width: 280px;
+    z-index: 999;
+    background-color: hsl(187, 100%, 98%);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    display: none;
+    flex-direction:column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.55);
+
+    display: none;
+
+    z-index: 998;
+    backdrop-filter: blur(.5px);
+}
+
+.sidebar-componentes {
+    list-style: none;
+}
+
+.sidebar-componentes li {
+    padding:clamp(0.80rem, 0.70rem + 0.50vw, 1rem);;
+
+    font-size: clamp(0.80rem, 1rem + 1.2vw, 1.5rem);
+}
+
+.sidebar-componentes li a:hover:not(:first-child) {
+    text-decoration: underline;
+}
+
+.menu-sidebar {
+    display: none !important;
+}
+
+/* =============================
+    MEDIA QUERY
+================================*/
 @media (max-width: 1279px) {
     .nav-componentes li {
     font-size: 1.5rem
@@ -96,27 +147,30 @@
 }
 }
 
-@media (max-width: 740px) {
+@media (max-width: 768px) {
+    .carrinho,
     .compras,
+    .login,
     .produtos {
         display: none !important;
     }
     .barra-de-pesquisa {
-    min-width: 10%;
+    min-width: 60%;
     }
-    .texto-carrinho {
-        display: inline-block;
+    .menu-sidebar {
+    display: flex !important;
     }
+    .navegacao i {
+        font-size: 1.2rem;
+    }
+    
 }
 
 @media (max-width: 490px) {
-    .texto-carrinho {
-        display: none;
-    }
-    .texto-login {
-        display: none;
-    }
     .nav-componentes li {
-    font-size: 1.2rem
+    font-size: 1.0rem
+    }
+    .sidebar {
+        width: 180px;
     }
 }
