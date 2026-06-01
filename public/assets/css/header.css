@@ -151,7 +151,8 @@
     .carrinho,
     .compras,
     .login,
-    .produtos {
+    .produtos,
+    .home {
         display: none !important;
     }
     .barra-de-pesquisa {

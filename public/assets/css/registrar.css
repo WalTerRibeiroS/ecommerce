@@ -1,0 +1,151 @@
+@import "./global.css";
+
+/* modal block */
+
+.registrar-block {
+    position: relative;
+
+    width: 100%;
+    max-width: 550px;
+    height: 800px;
+
+    background-color: #fffcfc;
+
+    border-radius: 8px;
+
+    padding: var(--spacing-xl);
+
+    box-shadow: var(--shadow-md);
+}
+
+/* Form / inputs */
+
+.registrar-heading h1 {
+    font-size: var(--font-xl);
+    margin-bottom: var(--spacing-xl);
+}
+
+.registrar-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md)
+}
+
+.registrar-inputs label {
+    font-size: var(--font-lg)
+}
+
+.registrar-inputs input {
+    width: 100%;
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: 1rem;
+    
+    border: 2px solid #e2e8f0;
+    border-radius: 8px; 
+    background-color: #fff;
+    color: #1a202c;
+    
+    outline: none;
+    box-shadow: none;
+}
+
+.registrar-inputs input:focus {
+    border-color: var(--cor-primaria);
+    box-shadow: 0 0 0 4px rgba(189, 69%, 54%, 0.15); 
+}
+
+.registrar-inputs input::placeholder {
+    color: #a0aec0;
+}
+
+/* adicionar js */
+.registrar-inputs input:required:invalid {
+    border-color: var(--cor-secundaria); 
+}
+
+.registrar-inputs:has(input:required) label::after {
+    content: " *";
+    color: var(--cor-secundaria);
+}
+
+.campo-email, .campo-senha {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-senha-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.input-senha-wrapper input {
+    width: 100%;
+    padding: var(--spacing-sm) var(--spacing-md);
+    padding-right: 45px; /* Espaço extra na direita pro texto não bater no olho */
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.botao-olho {
+    position: absolute;
+    right: 12px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #a0aec0;
+    transition: color 0.2s;
+}
+
+.botao-olho:hover {
+    color: black;
+}
+
+/* Botao */
+
+.registrar-botao-finalizar {
+    margin-top: var(--spacing-xl);
+}
+
+.botao-concluir {
+    padding: var(--spacing-md) var(--spacing-xl);
+    background-color: var(--cor-secundaria);
+    border: var(--cor-secundaria-click);
+    border-radius: var(--radius-sm);
+    font-size: var(--font-lg);
+    box-shadow: var(--shadow-md);
+    cursor: pointer;
+
+    margin-bottom: var(--spacing-lg);
+}
+
+.botao-concluir:hover {
+    background-color: var(--cor-secundaria-hover);
+}
+.botao-concluir:active {
+    background-color: var(--cor-secundaria-click);
+}
+
+/* Rodape */
+
+.registrar-footer {
+    display: flex;
+    font-size: var(--font-sm);
+    gap: 2px;
+}
+
+.registrar-footer a {
+    color: rgb(48, 48, 234);
+}
+.registrar-footer a:hover {
+    color: rgb(0, 0, 178);
+    text-decoration: underline;
+}
