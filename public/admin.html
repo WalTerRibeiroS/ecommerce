@@ -3,17 +3,136 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Ecommerce teste fictício, não é real, projeto pessoal para desenvolver e aprender fullstack básico">
-    <link rel="icon" href="./assets/imagens/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="/custom-icon.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <title>Ecommerce - Home</title>
+    <link rel="icon" href="./assets/imagens/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/custom-icon.png">
+
     <link rel="stylesheet" href="./assets/css/global.css">
+    <link rel="stylesheet" href="./assets/css/footer.css">
+    <link rel="stylesheet" href="./assets/css/header.css">
+
+    <script src="https://kit.fontawesome.com/849cc94242.js" crossorigin="anonymous"></script>
+    
+    <title>Ecommerce - Admin</title>
 </head>
 <body>
-    <h1>Quem leu mamou</h1>
+    <header>
+        <nav class="navbar">
+            <div class="navbar-wrapper">
 
-    <script type="module" src="./assets/js/algum.js"></script>
+                <div class="barra-de-pesquisa ">
+                    <input id="busca" class="textoInput" type="text" autocomplete="off" placeholder="Buscar produtos... "><i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+
+                <div class="navegacao">
+                    <ul class="nav-componentes">
+                        <li class="login">
+                            <a href="login.html"><i class="fa-solid fa-circle-user"></i><span class="texto-login">login</span></a>
+                        </li>
+                        <li class="produtos">
+                            <a href="produtos.html">produtos</a>
+                        </li>
+                        <li class="compras">
+                            <a href="compras.html">minhas compras</a>
+                        </li>
+                        <li class="carrinho"> 
+                            <a href="carrinho.html"><i class="fa-solid fa-cart-shopping"></i><span class="texto-carrinho">carrinho</span></a>
+                        </li>
+                        <li class="menu-sidebar" id="menu-sidebar"> 
+                            <a href="#"><i class="fa-solid fa-bars"></i></a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="overlay" id="overlay"></div>
+
+                <div class="sidebar" id="sidebar-menu">
+                    <ul class="sidebar-componentes">
+                        <li class="xmark" id="xmark-fechar-menu-sidebar"> 
+                            <a href="#"><i class="fa-solid fa-xmark"></i><span class="texto-xmark-menu-sidebar">fechar</span></a>
+                        </li>
+                        <li class="login-menu">
+                            <a href="#"><span class="texto-login">login</span></a>
+                        </li>
+                        <li class="produtos-menu">
+                            <a href="#">produtos</a>
+                        </li>
+                        <li class="compras-menu">
+                            <a href="#">minhas compras</a>
+                        </li>
+                        <li class="carrinho-menu"> 
+                            <a href="#">carrinho</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </nav>
+    </header>
+
+    <section class="section-content-wrapper padding-top-xl">
+
+    </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+
+            <div class="footer-section">
+                <h2 class="footer-logo">Loja fictícia</h2>
+
+                <p>
+                    Loja especializada em produtos fictícios feitos pra eu testar backend e frontend
+                </p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Navegação</h3>
+
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Produtos</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Suporte</h3>
+
+                <ul>
+                    <li><a href="#">Minha conta</a></li>
+                    <li><a href="#">Pedidos</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Políticas</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Redes</h3>
+
+                <div class="footer-social">
+
+                    <a href="https://www.youtube.com/@walteRibeiro">
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+
+                    <a href="https://github.com/WalTerRibeiroS">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+
+                    <a href="https://www.linkedin.com/in/walter-ribeiro-da-silva/">
+                        <i class="fa-brands fa-linkedin"></i>
+                    </a>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 Loja fictícia. Todos os direitos reservados para mim Walter.</p>
+        </div>
+    </footer>
+
+    <script type="module" src="./assets/js/algumacoisa.js"></script>
 </body>
 </html>

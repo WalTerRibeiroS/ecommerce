@@ -174,3 +174,14 @@
         width: 180px;
     }
 }
+
+/* =====================
+    REMOVER ICONES
+========================*/
+
+.remover-login .login {
+    display: none;
+}
+.remover-login .login-menu {
+    display: none;
+}
