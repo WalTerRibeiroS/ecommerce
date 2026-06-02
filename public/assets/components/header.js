@@ -23,19 +23,3 @@ overlay.addEventListener("click", () => {
     sidebar.style.display = "none";
     overlay.style.display = "none";
 });
-
-/* fecharMenuSidebar.addEventListener("click", () => {
-    sidebar.style.display = "none";
-    event.stopPropagation();
-})
-
-abrirMenuSidebar.addEventListener("click", () => {
-    sidebar.style.display = "flex";
-    event.stopPropagation();
-})
-
-document.addEventListener("click", () => {
-    if (sidebar.style.display === "flex" && !sidebar.contains(event.target)) {
-        sidebar.style.display = "none";
-    }
-}) */

@@ -33,8 +33,15 @@ formularioDeRegistro.addEventListener("submit", async (event) => {
     const result = await response.json();
 
     if (!response.ok) {
-        alertaDeErro.textContent = result.message || "Ocorreu um erro inesperado.";
+        alertaDeErro.textContent = result.errors[0].message || "Ocorreu um erro inesperado.";
         blocoDeErro.style.display = "flex";
         return;
     }
+
+   sessionStorage.setItem("notificacao", JSON.stringify({
+        mensagem: "Cadastro concluído com sucesso!",
+        tipo: "sucesso"
+    }));
+
+    window.location.href = "http://127.0.0.1:5500/public/index.html";
 })

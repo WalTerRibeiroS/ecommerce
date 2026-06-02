@@ -1,13 +1,14 @@
 import {asyncHandler} from "../../utils/asyncHandler.js"
 import baseLogger from "../../utils/logger.js"
 import {usuarioRegistrar} from "./services.js"
+import { registrarUsuarioSchema } from "../../zodSchemas/registrarUsuario.js"
 
 const logger = baseLogger.child({ layer: "controller" })
 
 export const usuarioPOST = asyncHandler(async(req, res) => {
     logger.info("Recebido requisacao para registrar usuario")
 
-    const { nome, sobrenome, email, senha } = req.body
+    const { nome, sobrenome, email, senha } = registrarUsuarioSchema.parse(req.body);
 
     const { usuario, accessToken, refreshToken } = await usuarioRegistrar(nome, sobrenome, email, senha)
 
