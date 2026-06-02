@@ -22,5 +22,5 @@ export const usuarioPOST = asyncHandler(async(req, res) => {
     const usuarioCompleto = { ...usuario, refreshToken }  /* spread (joga tudo da variavel + alguma outra coisa, resultado cria um novo objeto) */
 
     logger.info("Pessoa registrada com sucesso", { nome, sobrenome, email })
-    res.status(201).json({/* usuario, */ usuarioCompleto, accessToken})
+    res.status(201).json({ usuarioCompleto, accessToken })
 })
