@@ -21,7 +21,7 @@ const app = express();
 
 app .use(express.json())
     .use("/uploads", express.static("uploads"))
-    .use(cors())
+    .use(cors(corsOrigins))
     .use(helmet())
     .use(cookieParser())
     .use(morganMiddleware)

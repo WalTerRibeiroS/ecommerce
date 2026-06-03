@@ -15,7 +15,7 @@ export const usuarioPOST = asyncHandler(async(req, res) => {
     res.cookie("refreshToken", refreshToken, {
         httpOnly: true,
         secure: false, //true em producao, pq?
-        sameSite: "strict"
+        sameSite: "lax"
     })
 
     /* const { senha_hash, ...usuarioSeguro } = novoRegistro  <-- rest (pega o resto sem senha_hash*/

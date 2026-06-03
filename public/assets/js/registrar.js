@@ -24,6 +24,7 @@ formularioDeRegistro.addEventListener("submit", async (event) => {
 
     const response = await fetch("http://localhost:3000/api/v1/auth/registrar", {
         method: "POST",
+        credentials: "include",
         headers: {
             "Content-Type": "application/json"
         },
@@ -43,5 +44,5 @@ formularioDeRegistro.addEventListener("submit", async (event) => {
         tipo: "sucesso"
     }));
 
-    window.location.href = "http://127.0.0.1:5500/public/index.html";
+    window.location.href = "http://localhost:5500/public/index.html";
 })

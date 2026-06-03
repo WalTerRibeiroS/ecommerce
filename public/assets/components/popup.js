@@ -1,10 +1,4 @@
-console.log("popup.js carregado");
-
 function mostrarPopup(mensagem, tipo = "sucesso") {
-
-
-    console.log("criando popup");
-
 
     const popup = document.createElement("div");
 
@@ -25,9 +19,6 @@ function mostrarPopup(mensagem, tipo = "sucesso") {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-
-    console.log(sessionStorage.getItem("notificacao"));
-
 
     const notificacaoSalva =
         sessionStorage.getItem("notificacao");
