@@ -17,3 +17,26 @@ async function carregarProdutosDestaque(){
 }
 
 carregarProdutosDestaque()
+
+async function verificarUsuarioLogado() {
+    
+    try {
+        const response = await fetch("http://localhost:3000/api/v1/auth/status",
+            {
+                credentials: "include"
+            }
+        );
+
+        if (response.ok) {
+            document.querySelector(".texto-login").textContent = "Logado";
+
+            document.getElementById("icone-login").classList.remove("fa-regular");
+
+            document.getElementById("icone-login").classList.add("fa-solid");
+        }
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+verificarUsuarioLogado()
