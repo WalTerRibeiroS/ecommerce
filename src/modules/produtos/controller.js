@@ -28,9 +28,8 @@ export const produtosPATCH = asyncHandler(async(req, res) => {
 })
 
 export const destaqueProdutosGET = asyncHandler(async(req, res) => {
-    logger.info("aqui entrou")
+    
     const produtos = await services.destaqueProdutos()
 
-    logger.info("aqui saiu")
     res.json(produtos)
 })

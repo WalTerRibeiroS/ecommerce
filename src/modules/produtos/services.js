@@ -90,9 +90,8 @@ export const updateProduto = async (id, dados) => {  //parametros recebidos do f
 }
 
 export const destaqueProdutos = async () => {
-    logger.debug("aqui entrou")
+    
     const produtos = await model.produtosDestaque()
 
-    logger.debug("aqui saiu")
     return produtos
 }

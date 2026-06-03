@@ -58,12 +58,11 @@
     color: #a0aec0;
 }
 
-/* adicionar js */
-.registrar-inputs input:required:invalid {
+.registrar-inputs input:required:user-invalid {
     border-color: var(--cor-secundaria); 
 }
 
-.registrar-inputs:has(input:required) label::after {
+.registrar-inputs:has(input:required:user-invalid) label::after {
     content: " *";
     color: var(--cor-secundaria);
 }

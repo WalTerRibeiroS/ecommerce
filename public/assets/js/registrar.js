@@ -2,6 +2,8 @@ const formularioDeRegistro = document.getElementById("registrar-form");
 const alertaDeErro = document.getElementById("alerta-de-erro");
 const blocoDeErro = document.getElementById("container-de-erro");
 
+/* conexao backend com frontend */
+
 formularioDeRegistro.addEventListener("submit", async (event) => {
     event.preventDefault();
 
@@ -46,3 +48,24 @@ formularioDeRegistro.addEventListener("submit", async (event) => {
 
     window.location.href = "http://localhost:5500/public/index.html";
 })
+
+/* ----------- botao do olho ------ */
+
+const senha = document.getElementById("senha");
+const botaoOlho = document.getElementById("botao-olho");
+const iconeOlho = document.getElementById("icone-de-olho");
+
+botaoOlho.addEventListener("click", () => {
+
+    if (senha.type === "password"){
+        senha.type = "text";
+
+        iconeOlho.classList.remove("fa-eye");
+        iconeOlho.classList.add("fa-eye-slash");
+    } else {
+        senha.type = "password";
+
+        iconeOlho.classList.remove("fa-eye-slash");
+        iconeOlho.classList.add("fa-eye")
+    }
+});
