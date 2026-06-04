@@ -48,6 +48,8 @@ export function criarCardProduto(produto){
     const elementosPreco = [];
     const precoSemDesconto = document.createElement("p");
     const precoComDesconto = document.createElement("p");
+    const desconto = document.createElement("p")
+    const precoEdescontoContainer = document.createElement("div");
 
     if (Number(produto.desconto_percentual) === 0){
 
@@ -59,15 +61,19 @@ export function criarCardProduto(produto){
 
     }else{
 
+        precoEdescontoContainer.classList.add("container-preco-e-desconto")
         precoSemDesconto.classList.add("preco-original");
         precoComDesconto.classList.add("preco-desconto");
+        desconto.classList.add("desconto")
 
         const valorComDesconto = produto.preco * (1 - produto.desconto_percentual / 100);
 
         precoComDesconto.textContent = `R$ ${valorComDesconto.toFixed(2).replace('.', ',')}`;
         precoSemDesconto.textContent = `R$ ${Number(produto.preco).toFixed(2).replace('.', ',')}`;
-
-        elementosPreco.push(precoSemDesconto, precoComDesconto);
+        desconto.textContent = `${Number(produto.desconto_percentual)}% OFF`
+        
+        precoEdescontoContainer.append(precoComDesconto, desconto)
+        elementosPreco.push(precoSemDesconto, precoEdescontoContainer);
     }
     
     //-----vezes no cartao -----
