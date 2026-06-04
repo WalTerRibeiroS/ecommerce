@@ -27,8 +27,9 @@ import {AppError} from "../utils/errors.js"
 } */
 
 export const autentificarCookie = (req, res, next) => {
+    
     const token = req.cookies.refreshToken;
-    console.log(token)
+
     if (!token) {
         throw new AppError("Token nao foi fornecido", 401);
     }

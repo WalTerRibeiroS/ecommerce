@@ -14,7 +14,8 @@ import loginRoute from "./modules/login/routes.js"
 import refreshRoute from "./modules/refresh/router.js"
 import produtosRoute from "./modules/produtos/routes.js"
 import imagensProdutosRoute from "./modules/produtos/imagens_produtos/routes.js"
-import authVerificacao from "./modules/authVerificacao/route.js"
+import authVerificacaoRoute from "./modules/authVerificacao/route.js"
+import logoutRoute from "./modules/logout/route.js"
 
 //------código ----------
 
@@ -30,7 +31,8 @@ app .use(express.json())
     .use("/api/v1/auth/registrar", registrarRoute)
     .use("/api/v1/auth/login", loginRoute)
     .use("/api/v1/auth/refresh", refreshRoute)
-    .use("/api/v1/auth/status", authVerificacao)
+    .use("/api/v1/auth/status", authVerificacaoRoute)
+    .use("/api/v1/auth/logout", logoutRoute)
     .use("/api/v1/produtos", produtosRoute)
     .use("/api/v1/imagens-produtos", imagensProdutosRoute)
 
