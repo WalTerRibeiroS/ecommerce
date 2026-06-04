@@ -58,11 +58,11 @@
     color: #a0aec0;
 }
 
-.login-inputs input:required:invalid {
+.login-inputs input:required:user-invalid {
     border-color: var(--cor-secundaria); 
 }
 
-.login-inputs:has(input:required) label::after {
+.login-inputs:has(input:required:user-invalid) label::after {
     content: " *";
     color: var(--cor-secundaria);
 }
@@ -105,6 +105,23 @@
 
 .botao-olho:hover {
     color: black;
+}
+
+/* alerta de erro */
+
+.alerta-de-erro {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: var(--font-sm);
+    margin-top: var(--spacing-md);
+    color: var(--cor-secundaria);
+
+    display: none
+}
+
+.alerta-de-erro i {
+    flex-shrink: 0;
 }
 
 /* Botao */

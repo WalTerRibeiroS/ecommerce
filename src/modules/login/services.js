@@ -43,6 +43,6 @@ export const realizarLogin = async(email, senha) => {
 
     await salvarRefreshToken( hash,usuario.id)    
 
-    logger.debug("saindo com", {newAccessToken, newRefreshToken})
+    logger.debug("saindo")
     return {newAccessToken, newRefreshToken}
 }

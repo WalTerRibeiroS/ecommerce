@@ -1,0 +1,64 @@
+const formularioDeLogin = document.getElementById("login-form");
+const alertaDeErro = document.getElementById("alerta-de-erro");
+const blocoDeErro = document.getElementById("container-de-erro");
+
+formularioDeLogin.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    blocoDeErro.style.display = "none";
+
+    const dados = {
+        email: document.getElementById("email").value,
+        senha: document.getElementById("senha").value
+    };
+
+        const response = await fetch("http://localhost:3000/api/v1/auth/login", {
+        method: "POST",
+        credentials: "include",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(dados)
+    });
+    
+    const result = await response.json();
+
+    if (!response.ok) {
+        // 1. Tenta pegar a mensagem do Zod (se existir result.errors)
+        // 2. Se não existir, pega a mensagem direta do AppError (result.message)
+        // 3. Se nenhum existir, usa uma mensagem padrão
+        const mensagemErro = result.errors?.[0]?.message || result.message || "Ocorreu um erro inesperado.";
+
+        alertaDeErro.textContent = mensagemErro;
+        blocoDeErro.style.display = "flex";
+        return;
+    }
+
+   sessionStorage.setItem("notificacao", JSON.stringify({
+        mensagem: "Login concluído com sucesso!",
+        tipo: "sucesso"
+    }));
+
+    window.location.href = "http://localhost:5500/public/index.html";
+})
+
+/* ----------- botao do olho ------ */
+
+const senha = document.getElementById("senha");
+const botaoOlho = document.getElementById("botao-olho");
+const iconeOlho = document.getElementById("icone-de-olho");
+
+botaoOlho.addEventListener("click", () => {
+
+    if (senha.type === "password"){
+        senha.type = "text";
+
+        iconeOlho.classList.remove("fa-eye");
+        iconeOlho.classList.add("fa-eye-slash");
+    } else {
+        senha.type = "password";
+
+        iconeOlho.classList.remove("fa-eye-slash");
+        iconeOlho.classList.add("fa-eye")
+    }
+});

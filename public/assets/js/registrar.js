@@ -36,7 +36,9 @@ formularioDeRegistro.addEventListener("submit", async (event) => {
     const result = await response.json();
 
     if (!response.ok) {
-        alertaDeErro.textContent = result.errors[0].message || "Ocorreu um erro inesperado.";
+        const mensagemErro = result.errors?.[0]?.message || result.message || "Ocorreu um erro inesperado.";
+
+        alertaDeErro.textContent = mensagemErro;
         blocoDeErro.style.display = "flex";
         return;
     }
