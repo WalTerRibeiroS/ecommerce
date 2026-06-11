@@ -121,6 +121,13 @@ a {
     padding-inline: clamp(0.8rem, 2vw, 2rem);/* padding-inline: var(--spacing-lg); */
 }
 
+.container-maior {
+    width: 100%;
+    max-width: 1800px;
+    margin-inline: auto;
+    padding-inline: clamp(0.8rem, 2vw, 2rem);/* padding-inline: var(--spacing-lg); */
+}
+
 .btn {
     padding: clamp(0.6rem, 2vw, 1rem) clamp(1.4rem, 3vw, 2.5rem);/* var(--spacing-sm)
         var(--spacing-lg); */
@@ -147,32 +154,3 @@ a {
     outline: 2px solid var(--cor-secundaria-focus);
     outline-offset: 2px;
 }
-/*  Saber o que e para o q ai mais e pra controlar minhas imagens
-.product-card {
-    background: white;
-    border-radius: 12px;
-
-    overflow: hidden;
-}
-
-.product-image {
-    aspect-ratio: 1 / 1;
-
-    padding: 1rem;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background: #fff;
-}
-
-.product-image img {
-    width: 100%;
-    height: 100%;
-
-    object-fit: contain;
-
-    display: block;
-}
-*/

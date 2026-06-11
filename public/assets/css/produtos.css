@@ -1,23 +1,192 @@
-.products-grid {
-  display: grid;
+@import "./global.css";
 
-  grid-template-columns:
-    repeat(auto-fit, minmax(250px, 1fr));
-
-  gap: 1.5rem;
+.section-content-wrapper { /* apenas um secao n tudo */
+    min-height: 100dvh;
+    padding: clamp(1rem, 4vw, 4rem);
+    display: flex;
+    flex-direction: column;
 }
 
-/* 
-minmax(250px, 1fr)
+.container-maior {
+    width: 100%;
+    max-width: 1800px;
+    margin-inline: auto;
+    padding-inline: clamp(0.8rem, 2vw, 2rem);
+}
 
-Cada card:
+.main-section-wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 20px
+}
 
-nunca menor que 250px
-pode crescer
-auto-fit
+/* ===========================
+    ASIDE SECTION
+=============================*/
 
-O navegador automaticamente decide:
+.filtros {
+    width: 450px;
+    align-self: flex-start;
+    flex-direction: column;
 
-quantas colunas cabem
-quando quebrar linha
- */
+    padding: 2px
+}
+
+.filtros-preco {
+    margin-top: 10px;
+    background-color: rgb(248, 248, 248);
+    min-height: 100px; /* tirar depois */
+    width: 100%;
+    padding: var(--spacing-md);
+
+    display: flex;
+    flex-direction: column;
+}
+
+.filtros-preco p {
+    font-size: var(--font-md);
+    margin-top: var(--spacing-sm);
+}
+
+.slider-produtos {
+    margin-top: var(--spacing-md);
+    font-size: var(--font-md);
+}
+
+.intervalo-preco-inputs {
+    font-size: var(--font-xs);
+    margin-top: var(--spacing-lg);
+}
+
+.intervalo-preco-inputs input {
+    width: 90%;
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: 1rem;
+    
+    border: 1px solid #000000;
+    border-radius: 4px; 
+    background-color: #fff;
+    color: #1a202c;
+    
+    outline: none;
+    box-shadow: none;
+}
+
+.labels {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.inputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+/* ===========================
+    MAIN SECTION
+=============================*/
+
+.main-content {
+    height: 500px; /* tirar depois */
+    width: 100%;
+    flex-direction: column;
+
+    row-gap: 40px;
+    padding: 2px;
+}
+
+.filtros-layout {
+    background-color: rgba(0, 0, 0, 0.115);
+    height: 100px;
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: 1fr 0.5fr 1fr;
+
+    padding: var(--spacing-lg);
+    padding-left: var(--spacing-md);
+}
+
+.mobile-secreto {
+    display: none;
+}
+
+.filtro-secreto-mobile {
+    cursor: pointer
+}
+
+.botao-filtro-secreto-mobile  { 
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: 1rem;
+    
+    border: none;
+    border-radius: 4px; 
+    background-color: #fff;
+    color: #1a202c;
+    
+    outline: none;
+    box-shadow: none;
+}
+
+.filtro-secreto-mobile i { 
+    padding-right: 10px;
+}
+
+.ordenacao {
+    font-size: var(--font-md);
+    font-weight: bold;
+}
+
+.filtros-layout select {
+    appearance: base-select;
+
+    field-sizing: content;
+    min-width: 130px;
+
+    font-weight: normal;
+    margin-left: 5px;
+    background-color: #fff;
+    color: #1a202c;
+    padding: var(--spacing-sm) var(--spacing-sm);
+    border-radius: 2px;
+
+    border: none;
+}
+
+.filtros-layout select::picker-icon {
+    font-size: var(--font-xs);
+    align-content: center;
+    transition: 150ms ease;
+}
+
+.filtros-layout select:open::picker-icon {
+    rotate: 180deg;
+}
+
+.filtros-layout select option {
+    padding: .25em;
+}
+
+.produtos-por-pagina {
+    font-size: var(--font-md);
+    font-weight: bold;
+}
+
+
+
+.produtos-final {
+    background-color: rgb(3, 3, 3);
+    height: 200px;
+    width: 100%;
+
+    color: white;
+}
+
+/* ===========================
+    MOBILE  
+=============================*/
+
+/* ===========================
+    RESPONSIVIDADE 
+=============================*/
+

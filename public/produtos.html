@@ -11,12 +11,13 @@
     <link rel="stylesheet" href="./assets/css/global.css">
     <link rel="stylesheet" href="./assets/css/footer.css">
     <link rel="stylesheet" href="./assets/css/header.css">
+    <link rel="stylesheet" href="./assets/css/produtos.css">
 
     <script src="https://kit.fontawesome.com/849cc94242.js" crossorigin="anonymous"></script>
     
     <title>Ecommerce - Produtos</title>
 </head>
-<body>
+<body class="remover-produtos">
     <header>
         <nav class="navbar">
             <div class="navbar-wrapper">
@@ -27,9 +28,24 @@
 
                 <div class="navegacao">
                     <ul class="nav-componentes">
-                        <li class="login">
-                            <a href="login.html"><i class="fa-solid fa-circle-user"></i><span class="texto-login">login</span></a>
+
+                        <li class="home">
+                            <a href="index.html"><i class="fa-solid fa-home"></i><span class="texto-home">home</span></a>
                         </li>
+                        <li class="login">
+                            <a href="login.html" id="link-login">
+                                <i class="fa-regular fa-circle-user" id="icone-login"></i>
+                                <span class="texto-login">login</span>
+                            </a>
+                            <!-- menu escondido -->
+    
+                            <div class="menu-logado">
+                                <a href="perfil.html">perfil<i class="fa-solid fa-user"></i></a>
+
+                                <a href="#" class="botao-logout" id="botao-logout">sair da conta<i class="fa-solid fa-arrow-right-to-bracket"></i></a>
+                            </div>
+                        </li>
+
                         <li class="produtos">
                             <a href="produtos.html">produtos</a>
                         </li>
@@ -53,16 +69,22 @@
                             <a href="#"><i class="fa-solid fa-xmark"></i><span class="texto-xmark-menu-sidebar">fechar</span></a>
                         </li>
                         <li class="login-menu">
-                            <a href="#"><span class="texto-login">login</span></a>
+                            <a href="login.html"><span class="texto-login-sidebar">login</span></a>
                         </li>
                         <li class="produtos-menu">
-                            <a href="#">produtos</a>
+                            <a href="produtos.html">produtos</a>
                         </li>
                         <li class="compras-menu">
-                            <a href="#">minhas compras</a>
+                            <a href="compras.html">minhas compras</a>
                         </li>
                         <li class="carrinho-menu"> 
-                            <a href="#">carrinho</a>
+                            <a href="carrinho.html">carrinho</a>
+                        </li>
+                        <li class="perfil-menu"> 
+                            <a href="perfil.html" class="botao-perfil-menu" id="botao-perfil">perfil</a>
+                        </li>
+                        <li class="sair-menu"> 
+                            <a href="#" class="botao-logout">sair da conta<i class="fa-solid fa-arrow-right-to-bracket"></i></a>
                         </li>
                     </ul>
                 </div>
@@ -71,9 +93,77 @@
         </nav>
     </header>
 
-    <section class="section-content-wrapper padding-top-xl">
+    <div class="section-content-wrapper container-maior">
+        <div class="main-section-wrapper">
 
-    </section>
+            <aside class="filtros centralizar">
+                <div class="filtros-preco">
+
+                    <h3>Preço</h3>
+                    <p>Intervalo de preço</p>
+
+                    <div class="slider-produtos">
+                        <span>Slider (aprender a fazer um)</span>
+                    </div>
+
+                    <div class="intervalo-preco-inputs">
+
+                        <div class="labels">
+                            <label>mínimo</label><label>máximo</label>
+                        </div>
+
+                        <div class="inputs">
+                            <input type="text"> 
+                            <input type="text"> 
+                        </div>
+                    </div>
+
+                </div>
+            </aside>
+
+            <section class="main-content centralizar">
+                
+                <div class="filtros-layout">
+                    
+                    <div class="mobile-secreto">
+                        <div class="filtro-secreto-mobile">
+                            <button class="botao-filtro-secreto-mobile">
+                                <i class="fa-solid fa-sliders"></i>
+                                <label>Filtro</label>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="ordenacao">
+                        <i class="fa-solid fa-up-down"></i>
+                        <label>Ordenar por:</label>
+
+                        <select class="selecao">
+                            <option>A - Z</option>
+                            <option>Maior preço</option>
+                            <option>Menor preço</option>
+                        </select>
+                        
+                    </div>
+
+                    <div class="produtos-por-pagina">
+                        <label>Exibir:</label>
+
+                        <select>
+                            <option>20 por página</option>
+                            <option>40 por página</option>
+                            <option>60 por página</option>
+                        </select>
+                        
+                    </div>
+                </div>
+
+                <div class="produtos-final">
+                    joao
+                </div>
+            </section>
+        </div>
+    </div>
 
     <footer class="footer">
         <div class="footer-container">
@@ -133,6 +223,8 @@
         </div>
     </footer>
 
-    <script type="module" src="./assets/js/algumacoisa.js"></script>
+    <script type="module" src="./assets/js/produtos.js"></script>
+    <script type="module" src="./assets/components/adicaoLogado.js"></script>
+    <script type="module" src="./assets/components/header.js"></script>
 </body>
 </html>

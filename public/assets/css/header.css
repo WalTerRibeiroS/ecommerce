@@ -229,3 +229,11 @@
 .remover-login .login-menu {
     display: none;
 }
+
+.remover-produtos .produtos {
+    display: none;
+}
+
+.remover-produtos .produtos-menu {
+    display: none;
+}
