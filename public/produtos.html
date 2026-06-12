@@ -102,22 +102,42 @@
                     <h3>Preço</h3>
                     <p>Intervalo de preço</p>
 
-                    <div class="slider-produtos">
-                        <span>Slider (aprender a fazer um)</span>
+                    <div class="slider-container">
+
+                        <div class="slider-track"></div>
+                        <input type="range" id="range-min" min="1" max="5000" value="500" step="1">
+                        <input type="range" id="range-max" min="1" max="5000" value="4000" step="1">
+
+                    </div>
+
+                    <div class="valores-slider">
+                        <span id="label-min">R$ 500,00</span>
+                        <span id="label-max">R$ 4.000,00</span>
                     </div>
 
                     <div class="intervalo-preco-inputs">
+                        <div class="input-box">
 
-                        <div class="labels">
-                            <label>mínimo</label><label>máximo</label>
+                            <label for="input-min">Mínimo</label>
+                            <div class="input-wrapper">
+                                <span>R$</span>
+                                <input type="number" id="input-min" name="preco_min" value="500">
+                            </div>
+                            
                         </div>
+                        
+                        <div class="divisor-input">—</div>
 
-                        <div class="inputs">
-                            <input type="text"> 
-                            <input type="text"> 
+                        <div class="input-box">
+
+                            <label for="input-max">Máximo</label>
+                            <div class="input-wrapper">
+                                <span>R$</span>
+                                <input type="number" id="input-max" name="preco_max" value="4000">
+                            </div>
+
                         </div>
                     </div>
-
                 </div>
             </aside>
 
@@ -126,12 +146,14 @@
                 <div class="filtros-layout">
                     
                     <div class="mobile-secreto">
+
                         <div class="filtro-secreto-mobile">
                             <button class="botao-filtro-secreto-mobile">
                                 <i class="fa-solid fa-sliders"></i>
                                 <label>Filtro</label>
                             </button>
                         </div>
+
                     </div>
 
                     <div class="ordenacao">
@@ -154,12 +176,12 @@
                             <option>40 por página</option>
                             <option>60 por página</option>
                         </select>
-                        
+
                     </div>
                 </div>
 
-                <div class="produtos-final">
-                    joao
+                <div class="produtos-final" >
+                    <div class="produtos-grid" id="produtos-grid"></div>
                 </div>
             </section>
         </div>
