@@ -9,5 +9,6 @@ const router = Router()
 router.post("/", control.produtosPOST)
 router.patch("/:id", control.produtosPATCH)
 router.get("/destaque", control.destaqueProdutosGET)
+router.get("/listagem", control.listagemProdutosGET)
 
 export default router

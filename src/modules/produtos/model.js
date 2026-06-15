@@ -59,7 +59,50 @@ export const produtosDestaque = async () => {
     return result.rows
 }
 
-export const atualizarTodoOProduto = async(id, nome, descricao, preco, desconto_percentual, quantidade_disponivel, slug, frete) => {
+export const produtosListagem = async (ordenar = "az", limite, preco_min, preco_max) => {
+
+    let orderBy = "p.nome ASC";
+
+    switch (ordenar) {
+        case "maior_preco":
+            orderBy = "p.preco DESC";
+            break;
+
+        case "menor_preco":
+            orderBy = "p.preco ASC";
+            break;
+
+        default:
+            orderBy = "p.nome ASC";
+    }
+
+    const sql = `
+        SELECT
+            p.id,
+            p.nome,
+            p.preco,
+            p.desconto_percentual,
+            p.frete,
+            (
+                SELECT i.imagem_path
+                FROM imagens_produtos i
+                WHERE i.id_produto = p.id
+                ORDER BY i.id
+                LIMIT 1
+            ) AS imagem_path
+        FROM produtos p
+        WHERE p.preco BETWEEN $1 AND $2
+        ORDER BY ${orderBy}
+        LIMIT $3
+    `;
+
+    const result = await pool.query(sql, [preco_min || 1, preco_max || 4000, limite || 20])
+
+    return result.rows
+}
+
+
+/* export const atualizarTodoOProduto = async(id, nome, descricao, preco, desconto_percentual, quantidade_disponivel, slug, frete) => {
         const result = await pool.query(
         "UPDATE produtos SET nome = $1,descricao = $2,preco = $3,desconto_percentual = $4,quantidade_disponivel = $5,slug = $6,frete = $7, updated_at = NOW() WHERE id = $8 RETURNING *",
         [nome, descricao, preco, desconto_percentual, quantidade_disponivel, slug, frete, id]
@@ -73,7 +116,7 @@ export const deletarProduto = async(id) => {
         [id]
     )
     return result.rows[0]
-}
+} */
 
 
 /* export const getProdutoPorNomeOuSlug = async (nome, slug) => {

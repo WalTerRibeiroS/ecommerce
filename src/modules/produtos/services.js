@@ -95,3 +95,9 @@ export const destaqueProdutos = async () => {
 
     return produtos
 }
+
+export const listagemProdutos = async (ordenar, limite, preco_min, preco_max) => {
+    logger.debug("entrando")
+    
+    return await model.produtosListagem(ordenar, limite, preco_min, preco_max)
+}
