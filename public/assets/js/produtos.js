@@ -13,7 +13,7 @@ const labelMin = document.getElementById('label-min');
 const labelMax = document.getElementById('label-max');
 const track = document.querySelector('.slider-track');
 
-const precoDistanciaMinima = 10;
+const precoDistanciaMinima = 500;
 
 function formatarMoeda(valor) {
     return parseFloat(valor).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
@@ -72,8 +72,35 @@ atualizarSlider();
 
 /* Chamadas da API filtros */
 
-async function carregarProdutosGridA_Z(){
-    const response = await fetch("http://localhost:3000/api/v1/produtos/destaque");
+const select = document.getElementById("ordenacao")
+const selectLimite = document.getElementById("produtos-por-pagina")
+
+select.addEventListener("change", () =>{
+    carregarProdutosGrid()
+})
+
+selectLimite.addEventListener("change", () => {
+    carregarProdutosGrid();
+});
+
+rangeMin.addEventListener("change", () => {
+    carregarProdutosGrid();
+});
+
+rangeMax.addEventListener("change", () => {
+    carregarProdutosGrid();
+});
+
+async function carregarProdutosGrid(){
+
+    const ordenacao = document.getElementById("ordenacao").value;
+    const limite = document.getElementById("produtos-por-pagina").value;
+    const precoMin = document.getElementById("range-min").value;
+    const precoMax = document.getElementById("range-max").value;
+
+    const response = await fetch(
+        `http://localhost:3000/api/v1/produtos/listagem?ordenar=${ordenacao}&limite=${limite}&preco_min=${precoMin}&preco_max=${precoMax}`
+    );
 
     const produtos = await response.json();
 
@@ -88,4 +115,4 @@ async function carregarProdutosGridA_Z(){
     });
 }
 
-carregarProdutosGridA_Z()
+carregarProdutosGrid()

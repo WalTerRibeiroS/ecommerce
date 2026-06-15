@@ -105,13 +105,13 @@
                     <div class="slider-container">
 
                         <div class="slider-track"></div>
-                        <input type="range" id="range-min" min="1" max="5000" value="500" step="1">
+                        <input type="range" id="range-min" min="1" max="5000" value="1" step="1">
                         <input type="range" id="range-max" min="1" max="5000" value="4000" step="1">
 
                     </div>
 
                     <div class="valores-slider">
-                        <span id="label-min">R$ 500,00</span>
+                        <span id="label-min">R$ 1,00</span>
                         <span id="label-max">R$ 4.000,00</span>
                     </div>
 
@@ -121,7 +121,7 @@
                             <label for="input-min">Mínimo</label>
                             <div class="input-wrapper">
                                 <span>R$</span>
-                                <input type="number" id="input-min" name="preco_min" value="500">
+                                <input type="number" id="input-min" name="preco_min" value="1">
                             </div>
                             
                         </div>
@@ -160,10 +160,10 @@
                         <i class="fa-solid fa-up-down"></i>
                         <label>Ordenar por:</label>
 
-                        <select class="selecao">
-                            <option>A - Z</option>
-                            <option>Maior preço</option>
-                            <option>Menor preço</option>
+                        <select class="selecao" id="ordenacao">
+                            <option value="az">A - Z</option>
+                            <option value="maior_preco">Maior preço</option>
+                            <option value="menor_preco">Menor preço</option>
                         </select>
                         
                     </div>
@@ -171,10 +171,10 @@
                     <div class="produtos-por-pagina">
                         <label>Exibir:</label>
 
-                        <select>
-                            <option>20 por página</option>
-                            <option>40 por página</option>
-                            <option>60 por página</option>
+                        <select id="produtos-por-pagina">
+                            <option value="20">20 por página</option>
+                            <option value="40">40 por página</option>
+                            <option value="60">60 por página</option>
                         </select>
 
                     </div>
