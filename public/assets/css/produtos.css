@@ -398,7 +398,6 @@
     align-items: center;
 
     margin-top: 50px;
-
 }
 
 .pagination li {
@@ -409,14 +408,20 @@
     padding: 0 var(--spacing-md);
 }
 
-.pagination li:hover {
-    cursor: pointer;
-
+.pagination a {
+    cursor: pointer
 }
 
-.selecionada {
+.pagination .active {
     color: var(--cor-secundaria)
 }
+
+.pagination .disabled {
+    opacity: 0.5;
+    pointer-events: none
+}
+
+
 
 /* ===========================
     MOBILE  
