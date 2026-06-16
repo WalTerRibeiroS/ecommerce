@@ -59,7 +59,7 @@ export const produtosDestaque = async () => {
     return result.rows
 }
 
-export const produtosListagem = async (ordenar = "az", limite, preco_min, preco_max) => {
+export const produtosListagem = async (ordenar = "az", limite, pagina, preco_min, preco_max) => {
 
     let orderBy = "p.nome ASC";
 
@@ -75,6 +75,17 @@ export const produtosListagem = async (ordenar = "az", limite, preco_min, preco_
         default:
             orderBy = "p.nome ASC";
     }
+
+    const offset = (pagina - 1) * limite
+
+    const totalResult = await pool.query(
+        `
+        SELECT COUNT(*) AS total
+        FROM produtos p
+        WHERE p.preco BETWEEN $1 AND $2
+        `,
+        [preco_min || 1, preco_max || 4000]
+    );
 
     const sql = `
         SELECT
@@ -93,12 +104,22 @@ export const produtosListagem = async (ordenar = "az", limite, preco_min, preco_
         FROM produtos p
         WHERE p.preco BETWEEN $1 AND $2
         ORDER BY ${orderBy}
-        LIMIT $3
+        LIMIT $3 OFFSET $4
     `;
 
-    const result = await pool.query(sql, [preco_min || 1, preco_max || 4000, limite || 20])
-
-    return result.rows
+    const produtosResult = await pool.query(sql, 
+        [
+            preco_min || 1,
+            preco_max || 4000,
+            limite || 20,
+            offset || 0
+        ]
+    );
+    
+    return {
+        produtos: produtosResult.rows,
+        total: Number(totalResult.rows[0].total)
+    }
 }
 
 

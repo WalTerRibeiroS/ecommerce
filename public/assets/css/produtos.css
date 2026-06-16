@@ -389,6 +389,35 @@
     font-weight: 600;
 }
 
+/* pagination */
+
+.pagination {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 50px;
+
+}
+
+.pagination li {
+    list-style-type: none;
+
+    font-weight: bold;
+    font-size: var(--font-md);
+    padding: 0 var(--spacing-md);
+}
+
+.pagination li:hover {
+    cursor: pointer;
+
+}
+
+.selecionada {
+    color: var(--cor-secundaria)
+}
+
 /* ===========================
     MOBILE  
 =============================*/

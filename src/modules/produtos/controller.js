@@ -37,10 +37,10 @@ export const destaqueProdutosGET = asyncHandler(async(req, res) => {
 export const listagemProdutosGET = asyncHandler(async(req, res) => {
     logger.info("solicitacao")
 
-    const { ordenar, limite, preco_min, preco_max } = req.query; 
+    const { ordenar, limite, pagina, preco_min, preco_max } = req.query; 
     
-    const produtos = await services.listagemProdutos(ordenar, limite, preco_min, preco_max)
+    const resultado = await services.listagemProdutos(ordenar, limite, pagina, preco_min, preco_max)
     
     logger.info("saindo")
-    res.json(produtos)
+    res.json(resultado)
 })

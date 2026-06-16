@@ -75,34 +75,45 @@ atualizarSlider();
 const select = document.getElementById("ordenacao")
 const selectLimite = document.getElementById("produtos-por-pagina")
 
+let paginaAtual = 1
+
 select.addEventListener("change", () =>{
-    carregarProdutosGrid()
+    paginaAtual = 1;
+    carregarProdutosGrid();
 })
 
 selectLimite.addEventListener("change", () => {
+    paginaAtual = 1;
     carregarProdutosGrid();
 });
 
 rangeMin.addEventListener("change", () => {
+    paginaAtual = 1;
     carregarProdutosGrid();
 });
 
 rangeMax.addEventListener("change", () => {
+    paginaAtual = 1;
     carregarProdutosGrid();
 });
 
 async function carregarProdutosGrid(){
 
     const ordenacao = document.getElementById("ordenacao").value;
-    const limite = document.getElementById("produtos-por-pagina").value;
+    const limite = parseInt(document.getElementById("produtos-por-pagina").value);
     const precoMin = document.getElementById("range-min").value;
     const precoMax = document.getElementById("range-max").value;
 
     const response = await fetch(
-        `http://localhost:3000/api/v1/produtos/listagem?ordenar=${ordenacao}&limite=${limite}&preco_min=${precoMin}&preco_max=${precoMax}`
+        `http://localhost:3000/api/v1/produtos/listagem?ordenar=${ordenacao}&limite=${limite}&pagina=${paginaAtual}&preco_min=${precoMin}&preco_max=${precoMax}`
     );
 
-    const produtos = await response.json();
+    const data = await response.json();
+
+    const produtos = data.produtos
+    const total = data.total
+
+    const totalPaginas = Math.ceil(total / limite)
 
     const grid = document.getElementById("produtos-grid");
 
@@ -113,6 +124,7 @@ async function carregarProdutosGrid(){
             criarCardProduto(produto)
         );
     });
+
 }
 
 carregarProdutosGrid()
