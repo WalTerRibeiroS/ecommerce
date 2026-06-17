@@ -131,18 +131,19 @@ async function carregarProdutosGrid(){
 
     const grid = document.getElementById("produtos-grid");
 
-    if (total === 0)
-        grid.innerHTML = <h1>Não foi possível encontrar produtos com esses filtros</h1>
-
-    grid.replaceChildren();
-
-    produtos.forEach(produto => {
-        grid.appendChild(
-            criarCardProduto(produto)
-        );
-    });
-
-    renderizarPaginacao(totalPaginas)
+    if (Number(total) === 0){
+        grid.innerHTML = `<h1>Não foi possível encontrar produtos com esses filtros. Tente outros</h1>`
+    } else {
+        grid.replaceChildren();
+    
+        produtos.forEach(produto => {
+            grid.appendChild(
+                criarCardProduto(produto)
+            );
+        });
+    
+        renderizarPaginacao(totalPaginas)
+    }
 }
 
 /* funcoes para fazer a paginacao */
