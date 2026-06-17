@@ -47,6 +47,7 @@ function atualizarSlider() {
     inputMax.value = maxVal;
 }
 
+const blocoErro = document.getElementById("caixa-de-erro")
 // Sincroniza quando digita direto nas caixas numéricas inferiores
 function atualizarPorInput() {
     let minVal = parseInt(inputMin.value) || 0;
@@ -57,6 +58,11 @@ function atualizarPorInput() {
         rangeMax.value = maxVal;
         atualizarSlider();
     }
+
+    if (maxVal - minVal < precoDistanciaMinima){
+        blocoErro.textContent = `*Espaço de preço muito pequeno (min. ${precoDistanciaMinima})`
+    }
+
 }
 
 // Ouvintes de eventos para os inputs de arrastar
@@ -64,8 +70,15 @@ rangeMin.addEventListener('input', atualizarSlider);
 rangeMax.addEventListener('input', atualizarSlider);
 
 // Ouvintes de eventos para as caixas de digitação
-inputMin.addEventListener('change', atualizarPorInput);
-inputMax.addEventListener('change', atualizarPorInput);
+inputMin.addEventListener('change', () => {
+    blocoErro.textContent = ""
+    atualizarPorInput()
+});
+
+inputMax.addEventListener('change', () => {
+    blocoErro.textContent = ""
+    atualizarPorInput()
+})
 
 // Executa uma vez no início para renderizar o estado inicial correto
 atualizarSlider();
@@ -77,7 +90,7 @@ const selectLimite = document.getElementById("produtos-por-pagina")
 
 let paginaAtual = 1
 
-select.addEventListener("change", () =>{
+select.addEventListener("change", () => {
     paginaAtual = 1;
     carregarProdutosGrid();
 })
@@ -109,6 +122,7 @@ async function carregarProdutosGrid(){
     );
 
     const data = await response.json();
+    console.log(data)
 
     const produtos = data.produtos
     const total = data.total
@@ -117,6 +131,9 @@ async function carregarProdutosGrid(){
 
     const grid = document.getElementById("produtos-grid");
 
+    if (total === 0)
+        grid.innerHTML = <h1>Não foi possível encontrar produtos com esses filtros</h1>
+
     grid.replaceChildren();
 
     produtos.forEach(produto => {
@@ -124,6 +141,7 @@ async function carregarProdutosGrid(){
             criarCardProduto(produto)
         );
     });
+
     renderizarPaginacao(totalPaginas)
 }
 
@@ -147,16 +165,15 @@ function renderizarPaginacao(totalPaginas) {
         `
 
         pagination.appendChild(li)
-
         return
     }
 
     // <<
     pagination.appendChild(
         criarBotaoPaginacao(
-            '<i class="fa-solid fa-angles-left"></i>',
-            1,
-            paginaAtual === 1
+            '<i class="fa-solid fa-angles-left"></i>', //conteudo
+            1, //paginaDestino
+            paginaAtual === 1 //valor booleano de true desabilitado pq apos ele tem q ficar desativado
         )
     );
 
@@ -189,10 +206,10 @@ function renderizarPaginacao(totalPaginas) {
     for(let pagina = inicio; pagina <= fim; pagina++){
         pagination.appendChild(
             criarBotaoPaginacao(
-                pagina,
-                pagina,
-                false,
-                pagina === paginaAtual
+                pagina,//conteudo
+                pagina,//paginaDestino
+                false,//valor de desativado 
+                pagina === paginaAtual//ativado valor de true
             )
         );
     }
@@ -228,7 +245,7 @@ function criarBotaoPaginacao(conteudo, paginaDestino, desabilitado = false, ativ
     }
 
     if (desabilitado){
-        a.classList.add("desabilitado")
+        a.classList.add("disabled")
     }else {
         a.addEventListener("click", () => {
             paginaAtual = paginaDestino
