@@ -39,7 +39,11 @@ formularioDeLogin.addEventListener("submit", async (event) => {
         tipo: "sucesso"
     }));
 
-    window.location.href = "http://localhost:5500/public/index.html";
+    if (document.referrer) {
+        window.history.back();
+    } else {
+        window.location.href = "http://localhost:5500/public/index.html";
+    }
 })
 
 /* ----------- botao do olho ------ */
