@@ -65,11 +65,9 @@ function atualizarPorInput() {
 
 }
 
-// Ouvintes de eventos para os inputs de arrastar
 rangeMin.addEventListener('input', atualizarSlider);
 rangeMax.addEventListener('input', atualizarSlider);
 
-// Ouvintes de eventos para as caixas de digitação
 inputMin.addEventListener('change', () => {
     blocoErro.textContent = ""
     atualizarPorInput()
@@ -122,7 +120,6 @@ async function carregarProdutosGrid(){
     );
 
     const data = await response.json();
-    console.log(data)
 
     const produtos = data.produtos
     const total = data.total
@@ -264,5 +261,21 @@ function criarBotaoPaginacao(conteudo, paginaDestino, desabilitado = false, ativ
 
     return li
 }
+
+// --- menu do mobile 
+
+const filtrosAside = document.getElementById("filtros-aside")
+const btnMobile = document.getElementById("btn-filtros-mobile");
+const overlay = document.getElementById("overlay-aside");
+
+btnMobile.addEventListener("click", () => {
+    filtrosAside.classList.add("aberto")
+    overlay.classList.add("ativo")
+})
+
+overlay.addEventListener("click", () => {
+    filtrosAside.classList.remove("aberto")
+    overlay.classList.remove("ativo")
+})
 
 carregarProdutosGrid()

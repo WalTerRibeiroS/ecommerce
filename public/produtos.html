@@ -96,7 +96,10 @@
     <div class="section-content-wrapper container-maior">
         <div class="main-section-wrapper">
 
-            <aside class="filtros centralizar">
+            <div class="overlay-aside" id="overlay-aside"></div>
+
+            <aside class="filtros centralizar" id="filtros-aside">
+                
                 <div class="filtros-preco">
 
                     <h3>Preço</h3>
@@ -147,15 +150,11 @@
                 
                 <div class="filtros-layout">
                     
-                    <div class="mobile-secreto">
-
-                        <div class="filtro-secreto-mobile">
-                            <button class="botao-filtro-secreto-mobile">
-                                <i class="fa-solid fa-sliders"></i>
-                                <label>Filtro</label>
-                            </button>
-                        </div>
-
+                    <div class="filtro-secreto-mobile">
+                        <button class="botao-filtro-secreto-mobile" id="btn-filtros-mobile">
+                            <i class="fa-solid fa-sliders"></i>
+                            <label>Filtros</label>
+                        </button>
                     </div>
 
                     <div class="ordenacao">
