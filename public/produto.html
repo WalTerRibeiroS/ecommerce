@@ -100,20 +100,25 @@
         <div class="main-section container">
 
             <div class="imagens-produto-wrapper">
+
                 <div class="imagens-secundarias">
-                    <p>a</p>
-                    <p>a</p>
-                    <p>a</p>
-                    <p>a</p>
+                    <img src="assets/imagens/teste-1.webp" alt="1" class="thumbs selecionada">
+                    <img src="assets/imagens/teste-1.webp" alt="2" class="thumbs">
+                    <img src="assets/imagens/teste-1.webp" alt="3" class="thumbs">
+                    <img src="assets/imagens/teste-1.webp" alt="4" class="thumbs">
                 </div>
-                <div class="imagen-principal centralizar">
-                    <p>a</p>
+
+                <div class="imagem-principal-container centralizar" id="container-imagem-principal">
+                    <img src="assets/imagens/teste-1.webp" alt="1" id="imagem-principal">
+                    <div class="lens" id="lens"></div>
+                    <div class="result" id="result"></div>
                 </div>
+
             </div>
 
             <div class="infos-wrapper">
                 <div class="avalaciacao-wrapper">
-                    <p class="quantidade-avaliacao">(500)</p>
+                    <p class="quantidade-avaliacao">(500)</p> 
                     <p class="star-rating">5 estrelas</p>
                 </div>
 
@@ -121,8 +126,8 @@
 
                 <div class="preco-wrapper">
                     <p class="preco-normal">preco</p>
-                    <p class="preco-desconto">preco com desconto</p>
-                    <p class="desconto">desconto</p>
+                    <p class="preco-desconto">500<span class="desconto">80% OFF</span></p>
+                    <p class="doze-vezes-cartao">12x de <span class="preco-no-cartao">500</span> no cartão</p>
                     <p class="frete">frete</p>
                 </div>
 
@@ -146,10 +151,9 @@
                     </select>
                 </div>
 
-                <div class="botoes-compra">
-                    <button class="comprar" id="btn-comprar">Comprar</button>
-                    <span>ou</span>
-                    <button class="carrinho" id="carrinho">Adicionar ao carrinho</button>
+                <div class="botoes-compra centralizar">
+                    <button class="comprar" id="btn-comprar">Comprar agora</button>
+                    <button class="carrinho-finalizar" id="carrinho"><i class="fa-solid fa-cart-plus"></i>Adicionar ao carrinho</button>
                 </div>
             </div>
         </div>
