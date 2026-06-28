@@ -101,6 +101,62 @@
     object-fit: contain;
 }
 
+.hover-ativo {
+    border-color: var(--cor-primaria)
+}
+
+/* galeria */
+
+.overlay-galeria {
+    padding: var(--spacing-lg) var(--spacing-xl);
+    border: none;
+    background: transparent;
+    
+    width: 100vw;
+    height: 100vh;
+
+    scrollbar-width: none;
+}
+
+.overlay-galeria::-webkit-scrollbar {
+  display: none;
+}
+
+.overlay-galeria::backdrop {    
+    background-color: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(.5px);
+}
+
+.top-componentes {
+    display: flex;
+    justify-content: space-between;
+    align-items: self-start;
+}
+
+.contador {
+    color: white;
+    font-size: var(--font-md);
+    opacity: 0.50;
+    padding: 4px var(--spacing-md);
+    background-color: rgba(0, 0, 0, 0.412);
+    border-radius: 15px;
+}
+
+.btn-sair-galeria {
+    color: white;
+    font-size: var(--font-lg);
+    padding: var(--spacing-sm) var(--spacing-sm);
+    background-color: rgba(0, 0, 0, 0.412);
+    border: none;
+
+    cursor: pointer;
+}
+
+.imagem-galeria {
+    height: 600px;
+    cursor: zoom-in;
+}
+
 
 /* ===========================
     INFO 
@@ -252,10 +308,10 @@
     RESPONSIVIDADE
 =============================*/
 
-@media (max-width: 1024px) {
+/* @media (max-width: 1024px) {
 
     .main-section {
         display: grid;
         grid-template-columns: 1fr;
     }
-}
+} */
