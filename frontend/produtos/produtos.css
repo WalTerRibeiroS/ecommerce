@@ -1,4 +1,4 @@
-@import "./global.css";
+@import "../compartilhados/global.css";
 
 .section-content-wrapper { /* apenas um secao n tudo */
     min-height: 100dvh;

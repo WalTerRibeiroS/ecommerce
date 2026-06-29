@@ -1,7 +1,7 @@
 @font-face {
     font-family: 'Roboto';
-    src: url('../fontes.woff//Roboto-Regular.woff2') format('woff2'),
-        url('../fontes.woff/Roboto-Regular.woff') format('woff');
+    src: url('../assets/fontes.woff/Roboto-Regular.woff2') format('woff2'),
+        url('../assets/fontes.woff/Roboto-Regular.woff2') format('woff');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -9,8 +9,8 @@
 
 @font-face {
     font-family: 'Inter';
-    src: url('../fontes.woff/Inter-Regular.woff2') format('woff2'),
-        url('../fontes.woff/Inter-Regular.woff') format('woff');
+    src: url('../assets/fontes.woff/Inter-Regular.woff2') format('woff2'),
+        url('../assets/fontes.woff/Inter-Regular.woff') format('woff');
     font-weight: normal;
     font-style: normal;
     font-display: swap;

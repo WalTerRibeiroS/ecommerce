@@ -1,5 +1,5 @@
-import { verificarUsuarioLogado } from "../components/adicaoLogado.js"
-import { criarCardProduto } from "../components/product-card.js"
+import { verificarUsuarioLogado } from "../compartilhados/adicaoLogado.js"
+import { criarCardProduto } from "../compartilhados/product-card.js"
 
 verificarUsuarioLogado()
 

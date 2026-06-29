@@ -1,5 +1,5 @@
-import { criarCardProduto } from "../components/product-card.js"
-import { verificarUsuarioLogado } from "../components/adicaoLogado.js"
+import { criarCardProduto } from "../compartilhados/product-card.js"
+import { verificarUsuarioLogado } from "../compartilhados/adicaoLogado.js"
 
 async function carregarProdutosDestaque(){
     const response = await fetch("http://localhost:3000/api/v1/produtos/destaque");

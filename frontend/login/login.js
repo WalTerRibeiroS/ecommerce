@@ -42,7 +42,7 @@ formularioDeLogin.addEventListener("submit", async (event) => {
     if (document.referrer) {
         window.history.back();
     } else {
-        window.location.href = "http://localhost:5500/public/index.html";
+        window.location.href = "http://localhost:5500/frontend/index/index.html";
     }
 })
 

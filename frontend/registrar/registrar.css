@@ -1,13 +1,13 @@
-@import "./global.css";
+@import "../compartilhados/global.css";
 
 /* modal block */
 
-.login-block {
+.registrar-block {
     position: relative;
 
     width: 100%;
-    max-width: 500px;
-    height: 600px;
+    max-width: 550px;
+    height: 800px;
 
     background-color: #fffcfc;
 
@@ -20,22 +20,22 @@
 
 /* Form / inputs */
 
-.login-heading h1 {
+.registrar-heading h1 {
     font-size: var(--font-xl);
     margin-bottom: var(--spacing-xl);
 }
 
-.login-inputs {
+.registrar-inputs {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-md)
 }
 
-.login-inputs label {
+.registrar-inputs label {
     font-size: var(--font-lg)
 }
 
-.login-inputs input {
+.registrar-inputs input {
     width: 100%;
     padding: var(--spacing-sm) var(--spacing-md);
     font-size: 1rem;
@@ -49,23 +49,24 @@
     box-shadow: none;
 }
 
-.login-inputs input:focus {
+.registrar-inputs input:focus {
     border-color: var(--cor-primaria);
     box-shadow: 0 0 0 4px rgba(189, 69%, 54%, 0.15); 
 }
 
-.login-inputs input::placeholder {
+.registrar-inputs input::placeholder {
     color: #a0aec0;
 }
 
-.login-inputs input:required:user-invalid {
+.registrar-inputs input:required:user-invalid {
     border-color: var(--cor-secundaria); 
 }
 
-.login-inputs:has(input:required:user-invalid) label::after {
+.registrar-inputs:has(input:required:user-invalid) label::after {
     content: " *";
     color: var(--cor-secundaria);
 }
+
 .campo-email, .campo-senha {
     display: flex;
     flex-direction: column;
@@ -87,6 +88,10 @@
     font-size: 1rem;
     outline: none;
     transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.senha-requerimentos {
+    font-size: 10px;
 }
 
 .botao-olho {
@@ -126,7 +131,7 @@
 
 /* Botao */
 
-.login-botao-finalizar {
+.registrar-botao-finalizar {
     margin-top: var(--spacing-xl);
 }
 
@@ -151,14 +156,16 @@
 
 /* Rodape */
 
-.login-footer {
+.registrar-footer {
+    display: flex;
     font-size: var(--font-sm);
+    gap: 2px;
 }
 
-.login-footer a {
+.registrar-footer a {
     color: rgb(48, 48, 234);
 }
-.login-footer a:hover {
+.registrar-footer a:hover {
     color: rgb(0, 0, 178);
     text-decoration: underline;
 }

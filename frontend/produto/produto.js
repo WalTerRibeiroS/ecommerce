@@ -1,7 +1,9 @@
-import { verificarUsuarioLogado } from "../components/adicaoLogado.js"
+import { verificarUsuarioLogado } from "../compartilhados/adicaoLogado.js"
 verificarUsuarioLogado()
 
 /* chamada das rotas */
+
+
 
 /* funcionamento da navegacao das imagens */
 
