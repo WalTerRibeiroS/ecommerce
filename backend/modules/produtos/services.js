@@ -103,3 +103,11 @@ export const listagemProdutos = async (ordenar, limite, pagina, preco_min, preco
     
     return resultado
 }
+
+export const produtosInfo = async (id) => {
+    logger.debug("entrando")
+    
+    const resultado = await model.infoProduto(id)
+    
+    return resultado
+}

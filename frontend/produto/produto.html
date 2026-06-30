@@ -119,9 +119,6 @@
 
                 <div class="imagens-secundarias">
                     <img src="../assets/imagens/teste-1.webp" alt="1" class="thumbs selecionada hover-ativo">
-                    <img src="../assets/imagens/teste-2.webp" alt="2" class="thumbs">
-                    <img src="../assets/imagens/teste-1.webp" alt="3" class="thumbs">
-                    <img src="../assets/imagens/teste-2.webp" alt="4" class="thumbs">
                 </div>
 
                 <div class="imagem-principal-container centralizar" id="container-imagem-principal">
@@ -136,17 +133,23 @@
             <div class="infos-wrapper">
 
                 <div class="avalaciacao-wrapper">
-                    <p class="quantidade-avaliacao">(500)</p> 
-                    <p class="star-rating">5 estrelas</p>
+                    <p class="quantidade-avaliacao"></p> 
+                    <p class="star-rating"></p>
                 </div>
 
-                <h2 class="nome">Teste</h2>
+                <h2 class="nome"></h2>
 
                 <div class="preco-wrapper">
-                    <p class="preco-normal">preco</p>
-                    <p class="preco-desconto">500<span class="desconto">80% OFF</span></p>
+                    <p class="preco-normal"></p>
+
+                    <div class="wrapper-desconto">
+                        <p class="preco-desconto"></p>
+                        <span class="desconto"></span>
+                    </div>
+
                     <p class="doze-vezes-cartao">12x de <span class="preco-no-cartao">500</span> no cartão</p>
-                    <p class="frete">frete</p>
+
+                    <p class="frete" id="frete">frete</p>
                 </div>
 
                 <p class="descricao">descricao</p>
@@ -157,19 +160,19 @@
                 <p class="info-entrega">Chegará entre dia 5 até 12 de julho</p>
 
                 <div class="estoque-info">
-                    <h2>Estoque disponivel</h2>
-                    <label for="">Quantidade: </label>
-                    <select name="" id="" class="quantidade-selecionada">
+                    <h2 id="estoque">Estoque disponivel</h2>
+                    <label id="quantidade">Quantidade: </label>
+                    <!-- <select class="quantidade-selecionada">
                         <option value="1">1 unidade</option>
                         <option value="2">2 unidades</option>
                         <option value="3">3 unidades</option>
                         <option value="4">4 unidades</option>
                         <option value="5">5 unidades</option>
                         <option value="6">6 unidades</option>
-                    </select>
+                    </select> -->
                 </div>
 
-                <div class="botoes-compra centralizar">
+                <div class="botoes-compra centralizar" id="botoes-comprar">
                     <button class="comprar" id="btn-comprar">Comprar agora</button>
                     <button class="carrinho-finalizar" id="carrinho"><i class="fa-solid fa-cart-plus"></i>Adicionar ao carrinho</button>
                 </div>

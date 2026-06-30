@@ -1,9 +1,23 @@
 import { verificarUsuarioLogado } from "../compartilhados/adicaoLogado.js"
-verificarUsuarioLogado()
+import { criarLayout} from "./criarLayout.js"
 
+verificarUsuarioLogado()
+chamarAPI()
 /* chamada das rotas */
 
+async function chamarAPI() {
 
+    const id = 36
+
+    const slug = "placa-de-som-usb-externa-green-connection"
+
+    const response = await fetch(`http://localhost:3000/api/v1/produtos/pagina/${slug}-${id}`)
+
+    const infoProduto = await response.json();
+    console.log("infoProduto1: ", infoProduto)
+
+    criarLayout(infoProduto);
+}
 
 /* funcionamento da navegacao das imagens */
 

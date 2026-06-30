@@ -186,7 +186,7 @@
 .preco-wrapper {
     display: grid;
     grid-template-columns: 1fr;
-    gap: var(--spacing-xs);
+    gap: var(--spacing-md);
     align-items: baseline;/*  */
 }
 
@@ -195,20 +195,28 @@
     color: gray;
 }
 
+.wrapper-desconto {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
 .preco-desconto {
     font-size: var(--font-lg);
-    font-weight: bold;display: flex;
-    align-items: center;
-    gap: 8px;
+    font-weight: bold;
+    display: flex;
 }
 
 .desconto {
     background-color: rgb(10, 235, 10);
     color: white;
-    font-size: var(--font-sm);
+    font-size: var(--font-md);
     font-weight: bold;
-    display: inline-block;
-    padding: 2px 8px;  
+    padding: 4px 8px;  
+}
+
+.sem-desconto {
+    background-color: transparent;
 }
 
 .frete {
@@ -222,6 +230,9 @@
     font-size: var(--font-md)
 }
 
+.estoque-indisponivel {
+    color: var(--cor-secundaria)
+}
 
 /* ===========================
     FINALIZAR

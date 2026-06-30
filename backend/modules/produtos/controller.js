@@ -44,3 +44,13 @@ export const listagemProdutosGET = asyncHandler(async(req, res) => {
     logger.info("saindo")
     res.json(resultado)
 })
+
+export const paginaProdutoGET = asyncHandler(async(req, res) => {
+    logger.info("solicitacao")
+
+    const { id } = req.params
+
+    const infoProduto =  await services.produtosInfo(id)
+
+    res.json(infoProduto)
+})

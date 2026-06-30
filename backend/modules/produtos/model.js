@@ -122,6 +122,38 @@ export const produtosListagem = async (ordenar = "az", limite, pagina, preco_min
     }
 }
 
+export const infoProduto = async (id) => {
+    const result = await pool.query(
+        `SELECT
+            p.id,
+            p.nome,
+            p.preco,
+            p.desconto_percentual,
+            p.frete,
+            p.descricao,
+            p.quantidade_disponivel,
+            ARRAY_AGG(i.imagem_path ORDER BY i.id) AS imagens
+        FROM produtos p
+
+        LEFT JOIN imagens_produtos i
+            ON i.id_produto = p.id
+
+        WHERE p.id = $1
+
+        GROUP BY
+            p.id,
+            p.nome,
+            p.preco,
+            p.desconto_percentual,
+            p.frete,
+            p.descricao,
+            p.quantidade_disponivel;`,
+
+        [id]
+    )
+
+    return result.rows[0]
+}
 
 /* export const atualizarTodoOProduto = async(id, nome, descricao, preco, desconto_percentual, quantidade_disponivel, slug, frete) => {
         const result = await pool.query(
