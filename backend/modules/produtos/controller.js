@@ -37,9 +37,9 @@ export const destaqueProdutosGET = asyncHandler(async(req, res) => {
 export const listagemProdutosGET = asyncHandler(async(req, res) => {
     logger.info("solicitacao")
 
-    const { ordenar, limite, pagina, preco_min, preco_max } = req.query; 
+    const { ordenar, limite, busca, pagina, preco_min, preco_max } = req.query; 
     
-    const resultado = await services.listagemProdutos(ordenar, limite, pagina, preco_min, preco_max)
+    const resultado = await services.listagemProdutos(ordenar, limite, busca, pagina, preco_min, preco_max)
     
     logger.info("saindo")
     res.json(resultado)

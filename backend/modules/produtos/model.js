@@ -60,7 +60,7 @@ export const produtosDestaque = async () => {
     return result.rows
 }
 
-export const produtosListagem = async (ordenar = "az", limite, pagina, preco_min, preco_max) => {
+export const produtosListagem = async (ordenar = "az", limite, busca, pagina, preco_min, preco_max) => {
 
     let orderBy = "p.nome ASC";
 
@@ -89,7 +89,7 @@ export const produtosListagem = async (ordenar = "az", limite, pagina, preco_min
     );
 
     const sql = `
-        SELECT
+        SELECT 
             p.id,
             p.nome,
             p.preco,
@@ -104,13 +104,18 @@ export const produtosListagem = async (ordenar = "az", limite, pagina, preco_min
                 LIMIT 1
             ) AS imagem_path
         FROM produtos p
-        WHERE p.preco BETWEEN $1 AND $2
+        WHERE 
+            p.nome ILIKE $1
+        AND
+            p.preco BETWEEN $2 AND $3
+
         ORDER BY ${orderBy}
-        LIMIT $3 OFFSET $4
+        LIMIT $4 OFFSET $5
     `;
 
     const produtosResult = await pool.query(sql, 
         [
+            `%${busca || ""}%`,
             preco_min || 1,
             preco_max || 4000,
             limite || 20,

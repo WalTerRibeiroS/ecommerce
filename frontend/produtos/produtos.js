@@ -114,9 +114,12 @@ async function carregarProdutosGrid(){
     const limite = parseInt(document.getElementById("produtos-por-pagina").value);
     const precoMin = document.getElementById("range-min").value;
     const precoMax = document.getElementById("range-max").value;
-
+    
+    const params = new URLSearchParams(window.location.search);
+    const busca = params.get("busca");
+   
     const response = await fetch(
-        `http://localhost:3000/api/v1/produtos/listagem?ordenar=${ordenacao}&limite=${limite}&pagina=${paginaAtual}&preco_min=${precoMin}&preco_max=${precoMax}`
+        `http://localhost:3000/api/v1/produtos/listagem?ordenar=${ordenacao}&limite=${limite}&busca=${busca}&pagina=${paginaAtual}&preco_min=${precoMin}&preco_max=${precoMax}`
     );
 
     const data = await response.json();
@@ -125,6 +128,14 @@ async function carregarProdutosGrid(){
     const total = data.total
 
     const totalPaginas = Math.ceil(total / limite)
+
+    const textoBusca = document.getElementById("resultado-busca")
+
+    if (!busca){ //da pra meter um ternarian operator aqui
+       textoBusca.textContent = "" 
+    } else {
+        textoBusca.textContent = `Você pesquisou: ${busca}`
+    }
 
     const grid = document.getElementById("produtos-grid");
 

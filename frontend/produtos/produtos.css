@@ -20,6 +20,7 @@
     gap: 20px
 }
 
+
 /* ===========================
     ASIDE SECTION
 =============================*/
@@ -175,6 +176,11 @@
 /* ===========================
     MAIN SECTION
 =============================*/
+
+.resultado-busca {
+    padding: var(--spacing-sm);
+    color: rgba(0, 0, 0, 0.603)
+}
 
 .main-content {
     width: 100%;
