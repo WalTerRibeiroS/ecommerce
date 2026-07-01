@@ -7,6 +7,14 @@ export function criarCardProduto(produto){
     const card = document.createElement("article");
     card.classList.add("card");
 
+    card.addEventListener("click", () => {
+        
+        const id = produto.id
+        const slug = produto.slug
+
+        window.location.href = `http://localhost:5500/frontend/produto/produto.html?slug=${slug}&id=${id}`
+    })
+
     //--------- imagem ---
 
     const imagemContainer = document.createElement("div");

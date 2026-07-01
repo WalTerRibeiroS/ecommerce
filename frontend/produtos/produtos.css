@@ -276,6 +276,8 @@
     height: 500px;
     background-color: #ffffff;
     border-radius: 10px;
+
+    cursor: pointer;
 }
 
 .card-imagem-container {

@@ -42,6 +42,7 @@ export const produtosDestaque = async () => {
             p.preco,
             p.desconto_percentual,
             p.frete,
+            p.slug,
             (
                 SELECT i.imagem_path
                 FROM imagens_produtos i
@@ -94,6 +95,7 @@ export const produtosListagem = async (ordenar = "az", limite, pagina, preco_min
             p.preco,
             p.desconto_percentual,
             p.frete,
+            p.slug,
             (
                 SELECT i.imagem_path
                 FROM imagens_produtos i

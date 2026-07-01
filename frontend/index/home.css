@@ -63,6 +63,8 @@ CARD DE PRODUTOS
     padding: 0; /* mudar */
     border-radius: 10px;
     align-items: center;
+
+    cursor: pointer;
 }
 
 .card-imagem-container {

@@ -13,13 +13,39 @@ import { gerarStarRating } from "../compartilhados/star-rating.js"
 import { formatarMoeda } from "../compartilhados/formatarMoeda.js"
 import { gerarPrecoNoCartao } from "../compartilhados/preco-no-cartao.js";
 import { gerarDataDeEntrega } from "../compartilhados/gerarDataDeEntrega.js";
+import { criarNavegacaoLayout } from "./navegacaoGaleria.js";
+import { criarZoomIn } from "./criarZoomIn.js";
 
 export function criarLayout(infoProduto) {
-    /* criarGaleria(infoProduto.imagens); */
+    criarGaleria(infoProduto.imagens);
+    criarNavegacaoLayout();
+    criarZoomIn()
     criarInformacoes(infoProduto);
     criarEstoque(infoProduto);
 }
 
+function criarGaleria(imagens) {
+    
+    const containerImagensSecundarias = document.querySelector(".imagens-secundarias")
+    const containerImagemPrincipal = document.getElementById("container-imagem-principal")
+    const imagemPrincipal = document.getElementById("imagem-principal")
+
+    imagens.forEach((imagem, indice) => {
+
+        const img = document.createElement("img")
+
+        const path = "../../backend" + imagem /* perigoso caso eu mude os arquivos de ordem!!! */
+        img.src = path
+        img.classList.add("thumbs")
+
+        if(indice === 0) {
+            img.classList.add("selecionada")
+            imagemPrincipal.src = img.src
+        }
+        
+        containerImagensSecundarias.append(img)
+    })
+}
 
 function criarInformacoes(infoProduto){
 
@@ -71,45 +97,34 @@ function criarEstoque(infoProduto){
 
    //se nao tiver unidades do produto no estoque
 
-    if(infoProduto.quantidade_disponivel === "0.00") {
+    if(infoProduto.quantidade_disponivel <= 0) {
+
         dataDeEntrega.textContent = ""
         estoque.textContent = "Estoque indisponível"
         estoque.classList.add("estoque-indisponivel")
         quantidade.textContent = ""
         botoesCompra.style.display = "none"
-    } 
-    //criando a select
 
-    const containerEstoque = document.querySelector(".estoque-info")
-    const select = document.createElement("select")
-    select.classList.add("quantidade-selecionada")
+    } else {
+
+        const containerEstoque = document.querySelector(".estoque-info")
+        const select = document.createElement("select")
+        select.classList.add("quantidade-selecionada")
+
+        let contador = 1
+        const limite = Math.min(6, infoProduto.quantidade_disponivel)
+        
+        while(contador <= limite ) {
+            const option = document.createElement("option");
     
-    if(infoProduto.quantidade_disponivel > 6) {
-        for(let i = 1; i < 7; i++) {
-            const option = document.createElement("option")
-
-            option.value = i;
-            option.textContent = i === 1 ? `${i} unidade` : `${i} unidades`
-
-            select.append(option)
-        }
-
-        containerEstoque.append(select)
-
-    } else if(infoProduto.quantidade_disponivel <= 6 && infoProduto.quantidade_disponivel > 0) {
-        let estoqueDisponivel = infoProduto.quantidade_disponivel
-
-        while(estoqueDisponivel > 0){
-            const option = document.createElement("option")
-
-            option.value = estoqueDisponivel;
-            option.textContent = estoqueDisponivel === 1 ? `${estoqueDisponivel} unidade` : `${estoqueDisponivel} unidades`;
-
+            option.value = contador;
+            option.textContent = contador === 1 ? `${contador} unidade` : `${contador} unidades`;
+    
             select.append(option);
-
-            estoqueDisponivel--;
+    
+            contador++;
         }
 
         containerEstoque.append(select)
-    } 
+    }
 }

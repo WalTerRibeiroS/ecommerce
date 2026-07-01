@@ -92,7 +92,7 @@
     opacity: 1;
 }
 
-.imagem-principal-container img {
+.imagem-principal {
     max-width: 100%;
     max-height: 100%;
     width: auto;
@@ -311,6 +311,7 @@
 .carrinho-finalizar:active {
     background-color: var(--cor-primaria);
 }
+
 /* ===========================
     MOBILE
 =============================*/
@@ -319,10 +320,26 @@
     RESPONSIVIDADE
 =============================*/
 
-/* @media (max-width: 1024px) {
+@media (max-width: 1200px) {
+
+    .nav-componentes li {
+        font-size: 1.1rem
+    }
+    .navegacao i {
+        font-size: 1.2rem;
+    }
+    .lens, .result {
+        display: none
+    }
+    .imagem-principal-container {
+        cursor: pointer
+    }
+}
+
+@media (max-width: 768px) {
 
     .main-section {
         display: grid;
         grid-template-columns: 1fr;
     }
-} */
+}

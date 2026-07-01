@@ -56,6 +56,6 @@ botoesLogout.forEach(botao => {
             tipo: "sucesso"
         }));
 
-        window.location.href = "http://localhost:5500/public/index.html";
+        window.location.href = "http://localhost:5500/frontend/index/index.html";
     })
 })
