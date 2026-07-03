@@ -62,6 +62,8 @@ export const produtosDestaque = async () => {
 
 export const produtosListagem = async (ordenar = "az", limite, busca, pagina, preco_min, preco_max) => {
 
+    console.log("busca feita: ", busca)
+
     let orderBy = "p.nome ASC";
 
     switch (ordenar) {
@@ -83,11 +85,18 @@ export const produtosListagem = async (ordenar = "az", limite, busca, pagina, pr
         `
         SELECT COUNT(*) AS total
         FROM produtos p
-        WHERE p.preco BETWEEN $1 AND $2
+        WHERE 
+            p.nome ILIKE $1
+        AND
+            p.preco BETWEEN $2 AND $3
         `,
-        [preco_min || 1, preco_max || 4000]
+        [
+            `%${busca || ""}%`,
+            preco_min || 1,
+            preco_max || 4000
+        ]
     );
-
+    
     const sql = `
         SELECT 
             p.id,

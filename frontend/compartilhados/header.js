@@ -1,4 +1,28 @@
 /* ====================================
+    FAZER LOGOUT DA CONTA
+======================================*/
+
+function semAcentos(termo) {
+    return termo.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+}
+
+const barraDeBusca = document.getElementById("busca")
+
+barraDeBusca.addEventListener("keydown", (event) => {
+
+    if (event.key === "Enter") {
+
+        const busca = barraDeBusca.value.trim();
+        const buscaFormatada = semAcentos(busca)
+
+        if(!busca) return;
+
+        window.location.href = `http://localhost:5500/frontend/produtos/produtos.html?busca=${encodeURIComponent(buscaFormatada)}`
+        //encoded é pra caso seja algo como "cadeira de plástico" nos parametros nao fique com espaço e quebre, ele fica assim "cadeira%20de%20plastico"
+    }
+});
+
+/* ====================================
     ABRIR E FECHAR A SIDE BAR DO MENU
 ======================================*/
 const sidebar = document.querySelector(".sidebar");
