@@ -171,6 +171,24 @@ export const infoProduto = async (id) => {
     return result.rows[0]
 }
 
+export const sugestaoProdutoPesquisa = async (busca) => {
+
+    console.log("busca como parametro : ", busca)
+
+    const result = await pool.query(
+        `SELECT ARRAY_AGG(nome) AS sugestoes 
+        FROM (
+            SELECT nome 
+            FROM produtos 
+            WHERE nome ILIKE $1 
+            LIMIT 4
+        ) AS sub`, 
+        [`${busca}%`]
+    );
+
+    return result.rows[0]?.sugestoes || [];
+}
+
 /* export const atualizarTodoOProduto = async(id, nome, descricao, preco, desconto_percentual, quantidade_disponivel, slug, frete) => {
         const result = await pool.query(
         "UPDATE produtos SET nome = $1,descricao = $2,preco = $3,desconto_percentual = $4,quantidade_disponivel = $5,slug = $6,frete = $7, updated_at = NOW() WHERE id = $8 RETURNING *",

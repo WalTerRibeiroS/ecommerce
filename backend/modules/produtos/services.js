@@ -111,3 +111,18 @@ export const produtosInfo = async (id) => {
     
     return resultado
 }
+
+export const sugestaoPesquisa = async (busca) => {
+    logger.debug("entrando")
+    
+    if(!busca || busca.trim(busca) === ""){
+        logger.debug("Busca veio vazio, retornou vazia heehhee")
+        return []
+    }
+
+    console.log("busca no service: ", busca)
+
+    const resultado = await model.sugestaoProdutoPesquisa(busca)
+    
+    return resultado
+}

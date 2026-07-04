@@ -11,5 +11,6 @@ router.patch("/:id", control.produtosPATCH)
 router.get("/destaque", control.destaqueProdutosGET)
 router.get("/listagem", control.listagemProdutosGET)
 router.get("/pagina/:slug-:id", control.paginaProdutoGET)
+router.get("/sugestao", control.sugestaoPesquisaGET)
 
 export default router

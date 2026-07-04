@@ -32,28 +32,71 @@
     padding-right: 25px;
     outline: none;
     min-width: 50%;
-    border-radius: 4px;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
     box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+    position: relative;
+
+    transition: all 0.2s ease;
 }
 
 .barra-de-pesquisa i {
     background-color: rgb(255, 255, 255);
+    cursor: pointer;
 }
 
 .textoInput{
     background-color: transparent;
     border: none;
     color: rgb(0, 0, 0);
-    font-size:clamp(1.0rem, 1rem + 1.2vw, 1.5rem);
+    font-size: var(--font-md);
     min-width: 100%;
 }
 
 .textoInput:focus-visible {
     outline: none;
+}
+
+.dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+
+    z-index: 10;          
+    
+    background-color: white;
+    border: 1px solid #ccc;
+    margin: 0;
+    
+    list-style: none;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+    outline: none;
+
+    font-size: var(--font-md);
+    color:rgba(0, 0, 0, 0.644);
+
+    display: flex;
+    flex-direction: column;
+}
+
+.dropdown li  {
+    cursor: pointer;
+}
+
+.dropdown > li:hover  {
+    background-color: rgba(0, 0, 0, 0.082);
+}
+
+.dropdown i {
+    padding-right: 25px;
+
+    padding:10px 12px;
+    padding-right: 25px;
+
+    background-color: transparent;
+    color: rgba(0, 0, 0, 0.493);
 }
 
 .nav-componentes {

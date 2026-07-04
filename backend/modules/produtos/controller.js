@@ -54,3 +54,14 @@ export const paginaProdutoGET = asyncHandler(async(req, res) => {
 
     res.json(infoProduto)
 })
+
+export const sugestaoPesquisaGET = asyncHandler(async(req, res) => {
+    logger.info("solicitacao de pesquisa")
+
+    const {busca} = req.query
+    console.log("busca dos parametros: ", busca)
+
+    const resultado = await services.sugestaoPesquisa(busca)
+
+    res.json(resultado)
+})

@@ -7,8 +7,7 @@ export async function chamarAPI(paginaAtual) {
     
     const params = new URLSearchParams(window.location.search);
     const busca = params.get("busca");
-    console.log(busca)
-
+    
     const textoBusca = document.getElementById("resultado-busca")
 
     textoBusca.textContent = busca ? `Você pesquisou: ${busca}` :  "" 

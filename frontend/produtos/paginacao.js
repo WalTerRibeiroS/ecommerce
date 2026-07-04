@@ -9,7 +9,6 @@ export async function renderizarPaginacao(paginaAtual = 1) {
     const limite = parseInt(document.getElementById("produtos-por-pagina").value);
 
     const totalPaginas = Math.ceil(total / limite)
-    console.log("totalPaginas: ", totalPaginas)
 
     const pagination = document.getElementById("pagination")
 
