@@ -1,5 +1,6 @@
-import { verificarUsuarioLogado } from "../compartilhados/adicaoLogado.js"
+import { verificarUsuarioLogado } from "../header/adicaoLogado.js"
 import { criarLayout} from "./criarLayout.js"
+import { iniciarBarraPesquisa } from "../header/header.js";
 
 /* chamada das rotas */
 
@@ -86,3 +87,4 @@ overlayGaleria.addEventListener('wheel', (event) => {
 
 verificarUsuarioLogado()
 chamarAPI()
+iniciarBarraPesquisa()

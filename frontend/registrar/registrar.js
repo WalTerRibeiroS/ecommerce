@@ -1,3 +1,5 @@
+import { iniciarBarraPesquisa } from "../header/header.js"
+
 const formularioDeRegistro = document.getElementById("registrar-form");
 const alertaDeErro = document.getElementById("alerta-de-erro");
 const blocoDeErro = document.getElementById("container-de-erro");

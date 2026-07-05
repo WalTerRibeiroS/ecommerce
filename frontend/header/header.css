@@ -83,6 +83,11 @@
 
 .dropdown li  {
     cursor: pointer;
+    
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
 }
 
 .dropdown > li:hover  {

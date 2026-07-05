@@ -61,9 +61,7 @@ export const produtosDestaque = async () => {
 }
 
 export const produtosListagem = async (ordenar = "az", limite, busca, pagina, preco_min, preco_max) => {
-
-    console.log("busca feita: ", busca)
-
+    
     let orderBy = "p.nome ASC";
 
     switch (ordenar) {
@@ -172,9 +170,7 @@ export const infoProduto = async (id) => {
 }
 
 export const sugestaoProdutoPesquisa = async (busca) => {
-
-    console.log("busca como parametro : ", busca)
-
+    
     const result = await pool.query(
         `SELECT ARRAY_AGG(nome) AS sugestoes 
         FROM (

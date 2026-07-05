@@ -1,3 +1,5 @@
+import { iniciarBarraPesquisa } from "../header/header.js";
+
 const formularioDeLogin = document.getElementById("login-form");
 const alertaDeErro = document.getElementById("alerta-de-erro");
 const blocoDeErro = document.getElementById("container-de-erro");
@@ -66,3 +68,5 @@ botaoOlho.addEventListener("click", () => {
         iconeOlho.classList.add("fa-eye")
     }
 });
+
+iniciarBarraPesquisa()

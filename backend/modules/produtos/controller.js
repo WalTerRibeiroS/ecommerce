@@ -35,18 +35,18 @@ export const destaqueProdutosGET = asyncHandler(async(req, res) => {
 })
 
 export const listagemProdutosGET = asyncHandler(async(req, res) => {
-    logger.info("solicitacao")
+    /* logger.info("solicitacao") */
 
     const { ordenar, limite, busca, pagina, preco_min, preco_max } = req.query; 
     
     const resultado = await services.listagemProdutos(ordenar, limite, busca, pagina, preco_min, preco_max)
     
-    logger.info("saindo")
+    /* logger.info("saindo") */
     res.json(resultado)
 })
 
 export const paginaProdutoGET = asyncHandler(async(req, res) => {
-    logger.info("solicitacao")
+    /* logger.info("solicitacao") */
 
     const { id } = req.params
 
@@ -56,10 +56,9 @@ export const paginaProdutoGET = asyncHandler(async(req, res) => {
 })
 
 export const sugestaoPesquisaGET = asyncHandler(async(req, res) => {
-    logger.info("solicitacao de pesquisa")
+    /* logger.info("solicitacao de pesquisa") */
 
     const {busca} = req.query
-    console.log("busca dos parametros: ", busca)
 
     const resultado = await services.sugestaoPesquisa(busca)
 

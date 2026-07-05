@@ -1,8 +1,9 @@
-import { verificarUsuarioLogado } from "../compartilhados/adicaoLogado.js"
+import { verificarUsuarioLogado } from "../header/adicaoLogado.js"
 import { slider } from "./sliderPreco.js";
 import { chamarAPI } from "./chamarAPI.js";
 import { carregarProdutosGrid } from "./carregarProdutos.js";
 import { renderizarPaginacao } from "./paginacao.js";
+import { iniciarBarraPesquisa } from "../header/header.js";
 
 const select = document.getElementById("ordenacao")
 const selectLimite = document.getElementById("produtos-por-pagina")
@@ -60,3 +61,4 @@ overlay.addEventListener("click", () => {
 })
 
 carregarPagina()
+iniciarBarraPesquisa()

@@ -97,7 +97,7 @@ export const destaqueProdutos = async () => {
 }
 
 export const listagemProdutos = async (ordenar, limite, busca, pagina, preco_min, preco_max) => {
-    logger.debug("entrando")
+    /* logger.debug("entrando") */
     
     const resultado = await model.produtosListagem(ordenar, limite, busca, pagina, preco_min, preco_max)
     
@@ -105,7 +105,7 @@ export const listagemProdutos = async (ordenar, limite, busca, pagina, preco_min
 }
 
 export const produtosInfo = async (id) => {
-    logger.debug("entrando")
+    /* logger.debug("entrando") */
     
     const resultado = await model.infoProduto(id)
     
@@ -113,14 +113,12 @@ export const produtosInfo = async (id) => {
 }
 
 export const sugestaoPesquisa = async (busca) => {
-    logger.debug("entrando")
+    /* logger.debug("entrando") */
     
     if(!busca || busca.trim(busca) === ""){
         logger.debug("Busca veio vazio, retornou vazia heehhee")
         return []
     }
-
-    console.log("busca no service: ", busca)
 
     const resultado = await model.sugestaoProdutoPesquisa(busca)
     
