@@ -4,6 +4,8 @@ function mostrarPopup(mensagem, tipo = "sucesso") {
 
     popup.classList.add("popup");
     popup.classList.add(tipo);
+    popup.classList.add("mostrar");
+    
 
     popup.textContent = mensagem;
 

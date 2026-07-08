@@ -15,6 +15,12 @@ import { gerarPrecoNoCartao } from "../compartilhados/preco-no-cartao.js";
 import { gerarDataDeEntrega } from "../compartilhados/gerarDataDeEntrega.js";
 import { criarNavegacaoLayout } from "./navegacaoGaleria.js";
 import { criarZoomIn } from "./criarZoomIn.js";
+import { chamarAPI } from "./produto.js";
+
+export async function renderizarLayout(){
+    const infoProduto = await chamarAPI();
+    criarLayout(infoProduto)
+}
 
 export function criarLayout(infoProduto) {
     criarGaleria(infoProduto.imagens);

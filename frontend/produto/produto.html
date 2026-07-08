@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="../header/header.css">
     <link rel="stylesheet" href="../compartilhados/footer.css">
     <link rel="stylesheet" href="./produto.css">
+    <link rel="stylesheet" href="../compartilhados/popup.css">
 
     <script src="https://kit.fontawesome.com/849cc94242.js" crossorigin="anonymous"></script>
     
@@ -170,7 +171,12 @@
 
                 <div class="botoes-compra centralizar" id="botoes-comprar">
                     <button class="comprar" id="btn-comprar">Comprar agora</button>
-                    <button class="carrinho-finalizar" id="carrinho"><i class="fa-solid fa-cart-plus"></i>Adicionar ao carrinho</button>
+                    <button class="carrinho-finalizar" id="btn-carrinho"><i class="fa-solid fa-cart-plus"></i>Adicionar ao carrinho</button>
+
+                    <div class="alerta-de-erro" id="container-de-erro">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                        <p id="alerta-de-erro"></p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -235,8 +241,10 @@
     </footer>
 
     <script type="module" src="./produto.js"></script>
-    <script type="module" src="../compartilhados/adicaoLogado.js"></script>
+    <script type="module" src="../header/adicaoLogado.js"></script>
     <script type="module" src="../header/header.js"></script>
     <script type="module" src="../header/historicoPesquisa.js"></script>
+    <script type="module" src="../compartilhados/popup.js"></script>
+
 </body>
 </html>

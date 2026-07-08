@@ -26,9 +26,6 @@ formularioDeLogin.addEventListener("submit", async (event) => {
     const result = await response.json();
 
     if (!response.ok) {
-        // 1. Tenta pegar a mensagem do Zod (se existir result.errors)
-        // 2. Se não existir, pega a mensagem direta do AppError (result.message)
-        // 3. Se nenhum existir, usa uma mensagem padrão
         const mensagemErro = result.errors?.[0]?.message || result.message || "Ocorreu um erro inesperado.";
 
         alertaDeErro.textContent = mensagemErro;

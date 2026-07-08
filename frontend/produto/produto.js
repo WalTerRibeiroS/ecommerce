@@ -1,21 +1,28 @@
 import { verificarUsuarioLogado } from "../header/adicaoLogado.js"
 import { criarLayout} from "./criarLayout.js"
 import { iniciarBarraPesquisa } from "../header/header.js";
+import { ativarEventosBotao } from "./botoes.js";
+import { renderizarLayout } from "./criarLayout.js";
 
 /* chamada das rotas */
+
 
 const params = new URLSearchParams(window.location.search);
 
 const id = params.get("id");
 const slug = params.get("slug");
 
-async function chamarAPI() {
+export async function chamarAPI() {
 
     const response = await fetch(`http://localhost:3000/api/v1/produtos/pagina/${slug}-${id}`)
 
     const infoProduto = await response.json();
 
-    criarLayout(infoProduto);
+    return infoProduto
+}
+
+function botoesFinalizar(){
+    ativarEventosBotao()
 }
 /* continuar algum dia */
 
@@ -85,6 +92,7 @@ overlayGaleria.addEventListener('wheel', (event) => {
     overlayGaleria.close();
 }); */
 
+renderizarLayout()
 verificarUsuarioLogado()
-chamarAPI()
 iniciarBarraPesquisa()
+botoesFinalizar()

@@ -312,6 +312,21 @@
     background-color: var(--cor-primaria);
 }
 
+.alerta-de-erro {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: var(--font-sm);
+    margin-top: var(--spacing-md);
+    color: var(--cor-secundaria);
+
+    display: none
+}
+
+.alerta-de-erro i {
+    flex-shrink: 0;
+}
+
 /* ===========================
     MOBILE
 =============================*/

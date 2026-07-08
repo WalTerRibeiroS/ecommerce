@@ -41,3 +41,12 @@ function renderizarPesquisa(pesquisas){
         dropdown.appendChild(li)
     })
 }
+/* 
+// Seleciona o botão pelo ID
+const meuBotao = document.getElementById("meu-botao");
+
+// Adiciona o event listener
+meuBotao.addEventListener("click", function() {
+    window.location.href = "https://seusite.com";
+});
+ */
