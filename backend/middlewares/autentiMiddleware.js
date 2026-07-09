@@ -7,7 +7,7 @@ export const autentificarCookie = (req, res, next) => {
     const token = req.cookies.refreshToken;
 
     if (!token) {
-        throw new AppError("Token nao foi fornecido", 401);
+        throw new AppError("Usuário não foi autentificado, faça login", 401);
     }
 
     try {

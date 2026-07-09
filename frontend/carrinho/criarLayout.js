@@ -1,40 +1,33 @@
 import { chamarAPI } from "../carrinho/chamarAPI.js"
 import { formatarMoeda } from "../compartilhados/formatarMoeda.js"
 
+export const sectionCardCarrinho = document.getElementById("carrinho-produtos-wrapper");
+export const divResumoCompra = document.querySelector(".info-finalizar-compra")
+
 export async function renderizarLayout(){
 
-    const sectionCardCarrinho = document.getElementById("carrinho-produtos-wrapper");
+    //caso o usuário esteja deslogado
+    const btnLoginAuten = document.getElementById("btn-ir-login")
+    
+    btnLoginAuten.addEventListener("click", () => {
+        window.location.href = "http://localhost:5500/frontend/login/login.html"
+    })
+    //
+
     const infoProdutosCarrinho = await chamarAPI()
 
     if(infoProdutosCarrinho.length === 0) {
+        
+        divResumoCompra.replaceChildren()
 
-        sectionCardCarrinho.replaceChildren()
+        const avisoVazioContainer = document.querySelector(".avisos-vazio-container")
+        avisoVazioContainer.style.display = "flex"
 
-        const divResumoCompra = document.querySelector(".info-finalizar-compra")
-        divResumoCompra.classList.remove("info-finalizar-compra")
-        divResumoCompra.classList.add("display-none")
+        const btnCarrinhoVazio = document.getElementById("btn-ir-produtos")
 
-        const containerAviso = document.querySelector(".avisos-container")
-        const spanAviso = document.createElement("span")
-        const btnIr = document.createElement("button")
-
-        containerAviso.style.display = "flex"
-
-        spanAviso.textContent = "Seu carrinho está vazio. Volte mais tarde"
-        spanAviso.classList.add("aviso")
-
-        /* <button class="ir-para">Fazer login | Encher o carrinho</button> */
-
-        btnIr.textContent = "Encher carrinho"
-        btnIr.classList.add("ir-para")
-
-        btnIr.addEventListener("click", () => {
+        btnCarrinhoVazio.addEventListener("click", () => {
             window.location.href = "http://localhost:5500/frontend/produtos/produtos.html"
         })
-
-        containerAviso.appendChild(spanAviso)
-        containerAviso.appendChild(btnIr)
-
     }else {
 
     sectionCardCarrinho.replaceChildren()
@@ -234,9 +227,10 @@ function criarCardProdutoCarrinho(infoProdutoCarrinho, numerado) {
 async function criarCardResumoCompra() {
 
     const produtosSelecionados = await atualizarCardResumo();
-    
     console.log(produtosSelecionados)
+    
     const qtdProdutosSelecionados = produtosSelecionados.length 
+    
     //desconto
     const desconto = produtosSelecionados.reduce((acc, cur) => acc + Number(cur.desconto_percentual), 0);
 
@@ -354,7 +348,12 @@ async function criarCardResumoCompra() {
         botaoFinalizar.textContent = `Continuar (${qtdProdutosSelecionados})`
     }
 
-    botaoFinalizar.addEventListener("click", () => {
+    botaoFinalizar.addEventListener("click", () => {/* --------------------------------------------------------------------------------- */
+
+        
+        /* const todasAsQtds = produtosSelecionados.map(produto => produto.quantidade)
+        const todosOsIds = produtosSelecionados.map(produto => produto.id) */
+        
         window.location.href = "http://localhost:5500/frontend/finalizar/finalizar.html"
     })
 }

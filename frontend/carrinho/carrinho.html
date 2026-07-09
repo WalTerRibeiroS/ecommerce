@@ -96,12 +96,19 @@
 
     <section class="section-content-wrapper container padding-top-xl">
 
-        <div class="avisos-container">
-           <!--  <p class="aviso">Você precisa estar logado para acessar seu carrinho. Volte mais tarde</p> -->
+        <div class="avisos-logado-container">
+            <p class="aviso">Você precisa estar logado para acessar seu carrinho. Volte mais tarde</p>
+            <button class="ir-para" id="btn-ir-login">Fazer login</button>
+        </div>
+        
+        <div class="avisos-vazio-container">
+            <p class="aviso">Você precisa estar logado para acessar seu carrinho. Volte mais tarde</p>
+            <button class="ir-para" id="btn-ir-produtos">Fazer login</button>
         </div>
 
         <div class="main-section-wrapper" id="main-section-wrapper">     
-            <div class="carrinho-produtos-wrapper" id="carrinho-produtos-wrapper"></div>
+            <div class="carrinho-produtos-wrapper" id="carrinho-produtos-wrapper">
+            </div>
     
             <div class="info-finalizar-compra" id="info-finalizar-compra">
                 <h2>Resumo da compra</h2>

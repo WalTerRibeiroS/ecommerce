@@ -10,7 +10,7 @@
     AVISOS 
 =========================*/
 
-.avisos-container {
+.avisos-logado-container, .avisos-vazio-container {
     display: none; /* escondidos por enquanto */
     flex-direction: column;
     justify-content: center;
@@ -218,6 +218,38 @@
     border-radius: 0 0 var(--radius-sm) var(--radius-sm);
 
     border-top: 1px solid #2b2b2b48;
+}
+
+/* paginacao */
+
+.pagination {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 50px;
+}
+
+.pagination li {
+    list-style-type: none;
+
+    font-weight: bold;
+    font-size: var(--font-md);
+    padding: 0 var(--spacing-md);
+}
+
+.pagination a {
+    cursor: pointer
+}
+
+.pagination .active {
+    color: var(--cor-secundaria)
+}
+
+.pagination .disabled {
+    opacity: 0.5;
+    pointer-events: none
 }
 
 /* ===================== 

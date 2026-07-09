@@ -40,7 +40,13 @@ function esconderInterfaceLogado() {
     if (itemSair) itemSair.style.display = "none";
 }
 
-export async function verificarUsuarioLogado() {
+export async function verificarUsuarioLogado(opcoes = {}) {
+
+    const {
+        pagina = "",
+        onNaoLogado = null
+    } = opcoes
+
     const linkLogin = document.getElementById("link-login");
     const menuLogado = document.querySelector(".menu-logado");
 
@@ -49,6 +55,10 @@ export async function verificarUsuarioLogado() {
     if (usuarioLogado) {
         atualizarInterfaceLogado(menuLogado, linkLogin);
     } else {
-        esconderInterfaceLogado()
+        esconderInterfaceLogado();
+
+        if (onNaoLogado) {
+            onNaoLogado()
+        }
     }
 }
