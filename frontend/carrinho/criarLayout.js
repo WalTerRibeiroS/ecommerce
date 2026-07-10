@@ -227,7 +227,6 @@ function criarCardProdutoCarrinho(infoProdutoCarrinho, numerado) {
 async function criarCardResumoCompra() {
 
     const produtosSelecionados = await atualizarCardResumo();
-    console.log(produtosSelecionados)
     
     const qtdProdutosSelecionados = produtosSelecionados.length 
     
@@ -338,7 +337,6 @@ async function criarCardResumoCompra() {
 
     //finalização
     const botaoFinalizar = document.getElementById("botao-finalizar-compra-carrinho")
-    console.log(qtdProdutosSelecionados)
 
     if(qtdProdutosSelecionados === 0) {
         botaoFinalizar.textContent = "Continuar"
@@ -348,11 +346,15 @@ async function criarCardResumoCompra() {
         botaoFinalizar.textContent = `Continuar (${qtdProdutosSelecionados})`
     }
 
-    botaoFinalizar.addEventListener("click", () => {/* --------------------------------------------------------------------------------- */
+    botaoFinalizar.addEventListener("click", () => {
 
-        
-        /* const todasAsQtds = produtosSelecionados.map(produto => produto.quantidade)
-        const todosOsIds = produtosSelecionados.map(produto => produto.id) */
+        const produtosSelecionadosProcessados = produtosSelecionados.map(({ desconto_percentual, frete, imagem_path, nome, preco, quantidade_disponivel, slug, ... resto}) => resto)
+        console.log(produtosSelecionadosProcessados)
+
+        sessionStorage.setItem(
+            "checkout",
+            JSON.stringify(produtosSelecionadosProcessados)
+        );
         
         window.location.href = "http://localhost:5500/frontend/finalizar/finalizar.html"
     })
