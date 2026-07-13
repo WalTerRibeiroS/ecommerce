@@ -1,0 +1,146 @@
+.main-section-wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+    align-items: start;
+}
+
+/* ==========================
+   GRUPO DE PEDIDOS
+========================== */
+
+.grupo-pedidos {
+    background: #fff;
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+}
+
+.grupo-pedidos-data {
+    padding: var(--spacing-md) var(--spacing-lg);
+    font-size: var(--font-md);
+    font-weight: 700;
+    border-bottom: 1px solid #ececec;
+    background: #fafafa;
+}
+
+/* ==========================
+   CARD DO PEDIDO
+========================== */
+
+.card-pedido {
+    display: grid;
+    grid-template-columns: 90px 1fr auto;
+    gap: var(--spacing-lg);
+    align-items: center;
+    padding: var(--spacing-lg);
+}
+
+.card-pedido:not(:last-child) {
+    border-bottom: 1px solid #ececec;
+}
+
+/* ==========================
+   IMAGEM
+========================== */
+
+.pedido-imagem {
+    width: 90px;
+    height: 90px;
+    border: 1px solid #e8e8e8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: #fff;
+}
+
+.pedido-imagem img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* ==========================
+   INFORMAÇÕES
+========================== */
+
+.pedido-informacoes {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.pedido-status {
+    color: #18a558;
+    font-weight: 700;
+    font-size: var(--font-sm);
+}
+
+.pedido-nome {
+    font-size: 1.1rem;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.pedido-quantidade {
+    color: #666;
+    font-size: var(--font-sm);
+}
+
+/* ==========================
+   BOTÃO
+========================== */
+
+.pedido-acoes {
+    display: flex;
+    align-items: center;
+
+}
+
+.btn-ver-compra {
+    border: none;
+    background: var(--cor-primaria);
+    color: #fff;
+    padding: .8rem 1.8rem;
+    border-radius: var(--radius-sm);
+    font-size: var(--font-sm);
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition-normal);
+    white-space: nowrap;
+}
+
+.btn-ver-compra:hover {
+    background: var(--cor-primaria-hover);
+}
+
+.btn-ver-compra:active {
+    background: var(--cor-primaria-click);
+}
+
+/* ==========================
+   RESPONSIVO
+========================== */
+
+@media (max-width: 768px) {
+
+    .card-pedido {
+        grid-template-columns: 70px 1fr;
+        gap: var(--spacing-md);
+    }
+
+    .pedido-imagem {
+        width: 70px;
+        height: 70px;
+    }
+
+    .pedido-acoes {
+        grid-column: 1 / -1;
+        margin-top: var(--spacing-sm);
+    }
+
+    .btn-ver-compra {
+        width: 100%;
+    }
+}

@@ -3,18 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ecommerce teste fictício, não é real, projeto pessoal para desenvolver e aprender fullstack básico">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <link rel="icon" href="./assets/imagens/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../assets/imagens/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="/custom-icon.png">
 
-    <link rel="stylesheet" href="./assets/css/global.css">
-    <link rel="stylesheet" href="./assets/css/footer.css">
-    <link rel="stylesheet" href="./assets/css/header.css">
+    <link rel="stylesheet" href="../compartilhados/global.css">
+    <link rel="stylesheet" href="../compartilhados/footer.css">
+    <link rel="stylesheet" href="../header/header.css">
+    <link rel="stylesheet" href="./compras.css">
 
     <script src="https://kit.fontawesome.com/849cc94242.js" crossorigin="anonymous"></script>
     
-    <title>Ecommerce - Compras</title>
+    <title>Ecommerce - Minhas compras</title>
 </head>
 <body>
     <header>
@@ -22,22 +24,36 @@
             <div class="navbar-wrapper">
 
                 <div class="barra-de-pesquisa ">
-                    <input id="busca" class="textoInput" type="text" autocomplete="off" placeholder="Buscar produtos... "><i class="fa-solid fa-magnifying-glass"></i>
+                    <input id="busca" class="textoInput" type="text" autocomplete="off" placeholder="Buscar produtos... "><i class="fa-solid fa-magnifying-glass" id="lupa"></i>
+
+                    <ul class="dropdown" id="dropdown">
+                    </ul>
                 </div>
 
                 <div class="navegacao">
                     <ul class="nav-componentes">
+                        <li class="home">
+                            <a href="../index/index.html"><i class="fa-solid fa-home"></i><span class="texto-home">home</span></a>
+                        </li>
                         <li class="login">
-                            <a href="login.html"><i class="fa-solid fa-circle-user"></i><span class="texto-login">login</span></a>
+                            <a href="../login/login.html" id="link-login">
+                                <i class="fa-regular fa-circle-user" id="icone-login"></i>
+                                <span class="texto-login">login</span>
+                            </a>
+                            <!-- menu escondido -->
+    
+                            <div class="menu-logado">
+                                <a href="../perfil/perfil.html">perfil<i class="fa-solid fa-user"></i></a>
+
+                                <a href="#" class="botao-logout" id="botao-logout">sair da conta<i class="fa-solid fa-arrow-right-to-bracket"></i></a>
+                            </div>
                         </li>
+
                         <li class="produtos">
-                            <a href="produtos.html">produtos</a>
+                            <a href="../produtos/produtos.html">produtos</a>
                         </li>
-                        <li class="compras">
-                            <a href="compras.html">minhas compras</a>
-                        </li>
-                        <li class="carrinho"> 
-                            <a href="carrinho.html"><i class="fa-solid fa-cart-shopping"></i><span class="texto-carrinho">carrinho</span></a>
+                        <li class="carrinho">
+                            <a href="../carrinho/carrinho.html"><i class="fa-solid fa-cart-shopping"></i><span class="texto-carrinho">carrinho</span></a>
                         </li>
                         <li class="menu-sidebar" id="menu-sidebar"> 
                             <a href="#"><i class="fa-solid fa-bars"></i></a>
@@ -53,16 +69,19 @@
                             <a href="#"><i class="fa-solid fa-xmark"></i><span class="texto-xmark-menu-sidebar">fechar</span></a>
                         </li>
                         <li class="login-menu">
-                            <a href="#"><span class="texto-login">login</span></a>
+                            <a href="../login/login.html"><span class="texto-login-sidebar">login</span></a>
                         </li>
                         <li class="produtos-menu">
-                            <a href="#">produtos</a>
+                            <a href="../produtos/produtos.html">produtos</a>
                         </li>
                         <li class="compras-menu">
-                            <a href="#">minhas compras</a>
+                            <a href="../compras/compras.html">minhas compras</a>
                         </li>
-                        <li class="carrinho-menu"> 
-                            <a href="#">carrinho</a>
+                        <li class="perfil-menu"> 
+                            <a href="../perfil/perfil.html" class="botao-perfil-menu" id="botao-perfil">perfil</a>
+                        </li>
+                        <li class="sair-menu"> 
+                            <a href="#" class="botao-logout">sair da conta<i class="fa-solid fa-arrow-right-to-bracket"></i></a>
                         </li>
                     </ul>
                 </div>
@@ -71,9 +90,124 @@
         </nav>
     </header>
 
-    <section class="section-content-wrapper padding-top-xl">
+<section class="section-content-wrapper container padding-top-xl centralizar">
+    <div class="main-section-wrapper" id="main-section-wrapper">
 
-    </section>
+        <h1>COMPRAS</h1>
+
+        <!-- DIA -->
+
+        <div class="grupo-pedidos">
+
+            <div class="grupo-pedidos-data">
+                12 de julho
+            </div>
+
+            <div class="card-pedido">
+
+                <div class="pedido-imagem">
+                    <img src="https://placehold.co/90x90" alt="Produto">
+                </div>
+
+                <div class="pedido-informacoes">
+
+                    <span class="pedido-status">
+                        Em transporte
+                    </span>
+
+                    <h3 class="pedido-nome">
+                        Panela Pipoqueira Tramontina Em Aço Inox Com Tampa De Vidro 22cm
+                    </h3>
+
+                    <span class="pedido-quantidade">
+                        1 unidade
+                    </span>
+
+                </div>
+
+                <div class="pedido-acoes">
+
+                    <button class="btn-ver-compra">
+                        Ver compra
+                    </button>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- DIA -->
+
+        <div class="grupo-pedidos">
+
+            <div class="grupo-pedidos-data">
+                11 de julho
+            </div>
+
+            <div class="card-pedido">
+
+                <div class="pedido-imagem">
+                    <img src="https://placehold.co/90x90" alt="Produto">
+                </div>
+
+                <div class="pedido-informacoes">
+
+                    <span class="pedido-status">
+                        Entregue
+                    </span>
+
+                    <h3 class="pedido-nome">
+                        Mouse Logitech G Pro X Superlight Wireless Branco
+                    </h3>
+
+                    <span class="pedido-quantidade">
+                        1 unidade
+                    </span>
+
+                </div>
+
+                <div class="pedido-acoes">
+
+                    <button class="btn-ver-compra">
+                        Ver compra
+                    </button>
+
+                </div>
+
+            </div>
+
+            <div class="card-pedido">
+
+                <div class="pedido-imagem">
+                    <img src="https://placehold.co/90x90" alt="Produto">
+                </div>
+
+                <div class="pedido-informacoes">
+
+                    <span class="pedido-status">
+                        Entregue
+                    </span>
+
+                    <h3 class="pedido-nome">
+                        Teclado Mecânico Keychron K2 V2 RGB Switch Brown
+                    </h3>
+
+                    <span class="pedido-quantidade">
+                        2 unidades
+                    </span>
+
+                </div>
+
+                <div class="pedido-acoes">
+
+                    <button class="btn-ver-compra">
+                        Ver compra
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
     <footer class="footer">
         <div class="footer-container">
@@ -133,6 +267,9 @@
         </div>
     </footer>
 
-    <script type="module" src="./assets/js/algumacoisa.js"></script>
+    <script type="module" src="./compras.js"></script>
+    <script type="module" src="../header/header.js"></script>
+    <script type="module" src="../header/adicaoLogado.js"></script>
+    <script type="module" src="../header/historicoPesquisa.js"></script>
 </body>
 </html>

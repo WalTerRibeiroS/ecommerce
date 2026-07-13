@@ -20,3 +20,67 @@ export const registrarItemsPedido = async (client, idPedido, idsBuscar, quantida
         [idsPedidoArray, idsBuscar, quantidades, precos, nomes]
     )
 }
+
+export const pegarDadosItensComprados = async (idUsuario) => {
+
+    const result = await pool.query(
+        `
+        SELECT COALESCE(
+            json_agg(
+                json_build_object(
+                    'id_pedido', pedidos.id,
+                    'status', pedidos.status,
+                    'data', pedidos.created_at,
+                    'produtos', pedidos.produtos
+                )
+                ORDER BY pedidos.created_at DESC
+            ),
+            '[]'::json
+        ) AS compras
+
+        FROM (
+
+            SELECT
+                p.id,
+                p.status,
+                p.created_at,
+
+                json_agg(
+                    json_build_object(
+                        'id_produto', pr.id,
+                        'slug', pr.slug,
+                        'nome', pi.nome_produto,
+                        'imagem', img.imagem_path
+                    )
+                ) AS produtos
+
+            FROM pedidos p
+
+            INNER JOIN pedido_items pi
+                ON pi.id_pedido = p.id
+
+            INNER JOIN produtos pr
+                ON pr.id = pi.id_produto
+
+            LEFT JOIN LATERAL (
+                SELECT imagem_path
+                FROM imagens_produtos
+                WHERE id_produto = pr.id
+                ORDER BY id
+                LIMIT 1
+            ) img ON true
+
+            WHERE p.id_usuario = $1
+
+            GROUP BY
+                p.id,
+                p.status,
+                p.created_at
+
+        ) pedidos;
+        `,
+        [idUsuario]
+    );
+
+    return result.rows[0].compras;
+};

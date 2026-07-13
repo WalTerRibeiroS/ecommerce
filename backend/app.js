@@ -17,6 +17,7 @@ import imagensProdutosRoute from "./modules/produtos/imagens_produtos/routes.js"
 import authVerificacaoRoute from "./modules/authVerificacao/route.js"
 import logoutRoute from "./modules/logout/route.js"
 import carrinhoRoutes from "./modules/carrinho/routes.js"
+import pedidosRoutes from "./modules/pedidos/route.js"
 
 //------código ----------
 
@@ -37,6 +38,7 @@ app .use(express.json())
     .use("/api/v1/produtos", produtosRoute)
     .use("/api/v1/imagens-produtos", imagensProdutosRoute)
     .use("/api/v1/carrinho", carrinhoRoutes)
+    .use("/api/v1/pedidos", pedidosRoutes)
 
     .use(errorMiddleware)
 
