@@ -185,27 +185,65 @@ export const sugestaoProdutoPesquisa = async (busca) => {
     return result.rows[0]?.sugestoes || [];
 }
 
-/* export const atualizarTodoOProduto = async(id, nome, descricao, preco, desconto_percentual, quantidade_disponivel, slug, frete) => {
-        const result = await pool.query(
-        "UPDATE produtos SET nome = $1,descricao = $2,preco = $3,desconto_percentual = $4,quantidade_disponivel = $5,slug = $6,frete = $7, updated_at = NOW() WHERE id = $8 RETURNING *",
-        [nome, descricao, preco, desconto_percentual, quantidade_disponivel, slug, frete, id]
-    )
-    return result.rows[0]
+export const pegarValoresProdutos = async (idsBuscar) => {
+    
+    const result = await pool.query(
+        `SELECT json_agg(
+            json_build_object(
+                'id', p.id,
+                'preco', p.preco,
+                'desconto_percentual', p.desconto_percentual,
+                'frete', p.frete
+            )
+        ) AS produtos
+        FROM produtos p
+        WHERE p.id = ANY($1)`,
+
+        [idsBuscar]
+    );
+
+    return result.rows[0]?.produtos || [];
 }
 
-export const deletarProduto = async(id) => {
+export const pegarDadosProdutos = async (idsBuscar) => {
+    
     const result = await pool.query(
-        "DELETE FROM produtos WHERE id = $1 RETURNING id",
-        [id]
-    )
-    return result.rows[0]
-} */
+        `SELECT json_agg(
+            json_build_object(
+                'id', p.id,
+                'preco', p.preco,
+                'nome', p.nome
+            )
+        ) AS produtos
+        FROM produtos p
+        WHERE p.id = ANY($1)`,
 
+        [idsBuscar]
+    );
 
-/* export const getProdutoPorNomeOuSlug = async (nome, slug) => {
+    return result.rows[0]?.produtos || [];
+}
+
+export const reduzirEstoque = async (idsBuscar, quantidades) => {
     const result = await pool.query(
-        "SELECT * FROM produtos WHERE nome=$1 OR slug=$2",
-        [nome, slug]
-    )
-    return result.rows[0]
-} */
+        `
+        UPDATE produtos p
+
+        SET quantidade_disponivel = p.quantidade_disponivel - dados.quantidade
+
+        FROM (
+            SELECT *
+            FROM UNNEST(
+                $1::int[],
+                $2::int[]
+            ) AS dados(id_produto, quantidade)
+        ) dados
+
+        WHERE p.id = dados.id_produto
+        AND p.quantidade_disponivel >= dados.quantidade;
+        `,
+        [idsBuscar, quantidades]
+    );
+
+    return result.rowCount
+}

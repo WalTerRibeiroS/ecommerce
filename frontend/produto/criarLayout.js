@@ -97,7 +97,9 @@ function criarEstoque(infoProduto){
    const dataDeEntrega = document.querySelector(".info-entrega")
    const estoque = document.getElementById("estoque")
    const quantidade = document.getElementById("quantidade")
-   const botoesCompra = document.getElementById(".botoes-compra")
+   
+   const botaoComprar = document.querySelector(".comprar")
+   const botaoCarrinho = document.querySelector(".carrinho-finalizar")
    
    dataDeEntrega.textContent = gerarDataDeEntrega()
 
@@ -109,7 +111,8 @@ function criarEstoque(infoProduto){
         estoque.textContent = "Estoque indisponível"
         estoque.classList.add("estoque-indisponivel")
         quantidade.textContent = ""
-        botoesCompra.style.display = "none"
+        botaoComprar.style.display = "none"
+        botaoCarrinho.style.display = "none"
 
     } else {
 

@@ -64,3 +64,35 @@ export const sugestaoPesquisaGET = asyncHandler(async(req, res) => {
 
     res.json(resultado)
 })
+
+export const pegarValoresGET = asyncHandler(async(req, res) => {
+    logger.info("solicitacao de pesquisa de busca de valores")
+
+    const produtos = req.body
+
+    const produtosObjeto = produtos.reduce((acc, item) => {
+        acc[item.id] = item.quantidade;
+        return acc
+    }, {})
+
+    const idsBuscar = Object.keys(produtosObjeto)
+
+    const resultado = await services.pegarValores(idsBuscar, produtos)
+
+    res.json(resultado)
+})
+
+export const gravarValoresPOST = asyncHandler(async(req, res) => {
+    logger.info("solicitacao para gravar valores")
+
+    const idUsuario = req.usuario.id
+    const produtos = req.body
+
+    const resultado = await services.gravarValores(idUsuario, produtos)
+    
+    logger.info("saindo")
+    res.status(201).json({
+        mensagem: "Pedido realizado com sucesso!",
+        dados: resultado
+    })
+})

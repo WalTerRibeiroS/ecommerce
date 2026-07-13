@@ -1,7 +1,9 @@
 import { AppError } from "../../utils/errors.js"
 import baseLogger from "../../utils/logger.js"
 import * as model from "./model.js"
+import { criarPedido, registrarItemsPedido } from "../pedidos/model.js"
 import {validationError } from "../../utils/errors.js" 
+import { formatarNumeroQuebrado } from "../../../frontend/compartilhados/formatarNumeroQuebrado.js"
 
 const logger = baseLogger.child({ layer: "services" })
 //logger.debug("Entrando ")
@@ -123,4 +125,90 @@ export const sugestaoPesquisa = async (busca) => {
     const resultado = await model.sugestaoProdutoPesquisa(busca)
     
     return resultado
+}
+
+export const pegarValores = async (idsBuscar, produtos) => {
+    logger.debug("entrando")
+    
+    const resultado = await model.pegarValoresProdutos(idsBuscar)
+    
+    //ordenar produtos
+    const produtosOrdenado = produtos.sort((a, b) => a.id - b.id)
+    const quantidades = produtosOrdenado.map(p => p.quantidade)
+
+    //totalBrutoSemDesconto
+    const precos = resultado.map(p => p.preco)
+
+    const precosCerto = precos.map((valor, index) => valor * quantidades[index])
+    const totalBruto = precosCerto.reduce((acc, cur) => acc + cur, 0);
+
+    //totalEnvio
+    const fretes = resultado.map(p => p.frete)
+    const totalFrete = fretes.reduce((acc, cur) => acc + cur, 0);
+
+    //totalDescontado
+    const descontos = resultado.map(p => p.desconto_percentual)
+    const precosPosDescontos = precos.map((valor, index) => valor * (1 - descontos[index] / 100))//(1 - descontoPercentual / 100)
+    const precosPorDescontosCerto = precosPosDescontos.map((valor, index) => valor * quantidades[index])
+
+    const diferença = precosCerto.map((valor, index) => valor - precosPorDescontosCerto[index])
+    const totalDescontado = diferença.reduce((acc, cur) => acc + cur, 0)
+    
+    //total
+    const total = totalBruto + totalFrete - totalDescontado
+
+    return {
+        totalBrutoSemDesconto: totalBruto,
+        totalEnvio: totalFrete,
+        totalDescontado: totalDescontado,
+        total: total
+    }
+}
+
+export const gravarValores = async (idUsuario, produtos) => {
+    logger.debug("entrando")
+
+    const produtosOrdenado = produtos.sort((a, b) => a.id - b.id)
+    const produtosObjeto = produtosOrdenado.reduce((acc, item) => {
+        acc[item.id] = item.quantidade;
+        return acc
+    }, {})
+    
+    const idsBuscar = Object.keys(produtosObjeto)
+    const quantidades = produtosOrdenado.map(p => p.quantidade)
+
+    //query q reduz/valida estoque
+
+    const resultado = await model.reduzirEstoque(idsBuscar, quantidades)
+
+    if (resultado !== idsBuscar.length){
+        throw new AppError(404, "Estoque insuficiente para o pedido")
+        return
+    } 
+   
+    //criando pedido
+
+    const { totalBrutoSemDesconto, totalEnvio, totalDescontado, total } = await pegarValores(idsBuscar, produtos)
+
+    const totalBrutoFormatado = formatarNumeroQuebrado(totalBrutoSemDesconto);
+    const totalFreteFormatado = formatarNumeroQuebrado(totalEnvio);
+    const totalDescontadoFormatado = formatarNumeroQuebrado(totalDescontado);
+    const totalFormatado = formatarNumeroQuebrado(total);
+
+    const novoPedido = await criarPedido(idUsuario, totalBrutoFormatado, totalFreteFormatado, totalDescontadoFormatado, totalFormatado)
+    const idPedido = novoPedido.id
+
+    //inserindo produtos no itens_pedidos
+
+    const dados = await model.pegarDadosProdutos(idsBuscar)
+    const precos = dados.map(d => d.preco)
+    const nomes = dados.map(d => d.nome)
+
+    await registrarItemsPedido(idPedido, idsBuscar, quantidades, precos, nomes)
+ 
+    return {
+        idPedido: idPedido,
+        total: totalFormatado,
+        status: "sucesso"
+    }
 }

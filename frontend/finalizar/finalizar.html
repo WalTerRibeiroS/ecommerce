@@ -1,1 +1,207 @@
-opa
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ecommerce teste fictício, não é real, projeto pessoal para desenvolver e aprender fullstack básico">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="icon" href="../assets/imagens/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/custom-icon.png">
+
+    <link rel="stylesheet" href="../compartilhados/global.css">
+    <link rel="stylesheet" href="../compartilhados/footer.css">
+    <link rel="stylesheet" href="../header/header.css">
+    <link rel="stylesheet" href="./finalizar.css">
+
+    <script src="https://kit.fontawesome.com/849cc94242.js" crossorigin="anonymous"></script>
+    
+    <title>Ecommerce - finalizar</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="navbar-wrapper">
+
+                <div class="barra-de-pesquisa ">
+                    <input id="busca" class="textoInput" type="text" autocomplete="off" placeholder="Buscar produtos... "><i class="fa-solid fa-magnifying-glass" id="lupa"></i>
+
+                    <ul class="dropdown" id="dropdown">
+                    </ul>
+                </div>
+
+                <div class="navegacao">
+                    <ul class="nav-componentes">
+                        <li class="home">
+                            <a href="../index/index.html"><i class="fa-solid fa-home"></i><span class="texto-home">home</span></a>
+                        </li>
+                        <li class="login">
+                            <a href="../login/login.html" id="link-login">
+                                <i class="fa-regular fa-circle-user" id="icone-login"></i>
+                                <span class="texto-login">login</span>
+                            </a>
+                            <!-- menu escondido -->
+    
+                            <div class="menu-logado">
+                                <a href="../perfil/perfil.html">perfil<i class="fa-solid fa-user"></i></a>
+
+                                <a href="#" class="botao-logout" id="botao-logout">sair da conta<i class="fa-solid fa-arrow-right-to-bracket"></i></a>
+                            </div>
+                        </li>
+
+                        <li class="produtos">
+                            <a href="../produtos/produtos.html">produtos</a>
+                        </li>
+                        <li class="compras">
+                            <a href="../compras/compras.html">compras</a>
+                        </li>
+                        <li class="menu-sidebar" id="menu-sidebar"> 
+                            <a href="#"><i class="fa-solid fa-bars"></i></a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="overlay" id="overlay"></div>
+
+                <div class="sidebar" id="sidebar-menu">
+                    <ul class="sidebar-componentes">
+                        <li class="xmark" id="xmark-fechar-menu-sidebar"> 
+                            <a href="#"><i class="fa-solid fa-xmark"></i><span class="texto-xmark-menu-sidebar">fechar</span></a>
+                        </li>
+                        <li class="login-menu">
+                            <a href="../login/login.html"><span class="texto-login-sidebar">login</span></a>
+                        </li>
+                        <li class="login-menu">
+                            <a href="../login/login.html"><span class="texto-login-sidebar">login</span></a>
+                        </li>
+                        <li class="produtos-menu">
+                            <a href="../produtos/produtos.html">produtos</a>
+                        </li>
+                        <li class="compras-menu">
+                            <a href="../compras/compras.html">minhas compras</a>
+                        </li>
+                        <li class="perfil-menu"> 
+                            <a href="../perfil/perfil.html" class="botao-perfil-menu" id="botao-perfil">perfil</a>
+                        </li>
+                        <li class="sair-menu"> 
+                            <a href="#" class="botao-logout">sair da conta<i class="fa-solid fa-arrow-right-to-bracket"></i></a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </nav>
+    </header>
+
+<section class="section-content-wrapper container padding-top-xl centralizar">
+    <div class="main-section-wrapper" id="main-section-wrapper">
+        <div class="resumo-pedido">
+
+            <h2 class="resumo-titulo">
+                Resumo do pedido
+            </h2>
+
+            <div class="resumo-linha">
+                <span id="info-campo">produtos</span>
+                <span id="preco-total-bruto">R$ 0</span>
+            </div>
+
+            <div class="resumo-linha">
+                <span>Frete</span>
+                <span id="preco-total-frete">R$ 0</span>
+            </div>
+
+            <div class="resumo-linha">
+                <span>Desconto</span>
+                <span id="descontos">R$ 0</span>
+            </div>
+
+            <div class="resumo-total">
+
+                <span class="total-label">
+                    Total
+                </span>
+
+                <span class="total-valor" id="preco-total">
+                    R$ 0
+                </span>
+
+            </div>
+
+            <button class="btn-finalizar" id="finalizar-compra">
+                Finalizar compra
+            </button>
+
+            <div class="alerta-de-erro" id="container-de-erro">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <p id="alerta-de-erro"></p>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+    <footer class="footer">
+        <div class="footer-container">
+
+            <div class="footer-section">
+                <h2 class="footer-logo">Loja fictícia</h2>
+
+                <p>
+                    Loja especializada em produtos fictícios feitos pra eu testar backend e frontend
+                </p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Navegação</h3>
+
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Produtos</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Suporte</h3>
+
+                <ul>
+                    <li><a href="#">Minha conta</a></li>
+                    <li><a href="#">Pedidos</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Políticas</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Redes</h3>
+
+                <div class="footer-social">
+
+                    <a href="https://www.youtube.com/@walteRibeiro">
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+
+                    <a href="https://github.com/WalTerRibeiroS">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+
+                    <a href="https://www.linkedin.com/in/walter-ribeiro-da-silva/">
+                        <i class="fa-brands fa-linkedin"></i>
+                    </a>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 Loja fictícia. Todos os direitos reservados para mim Walter.</p>
+        </div>
+    </footer>
+
+    <script type="module" src="./finalizar.js"></script>
+    <script type="module" src="../header/header.js"></script>
+    <script type="module" src="../header/adicaoLogado.js"></script>
+    <script type="module" src="../header/historicoPesquisa.js"></script>
+</body>
+</html>

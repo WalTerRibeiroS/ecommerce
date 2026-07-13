@@ -1,5 +1,5 @@
-import { Router } from "express"/* 
-import { autentificar } from "../../middlewares/autentiMiddleware.js" */
+import { Router } from "express"
+import { autentificarCookie } from "../../middlewares/autentiMiddleware.js"
 import { autorizar } from "../../middlewares/autoriMiddleware.js"
 
 import * as control from "./controller.js"
@@ -12,5 +12,7 @@ router.get("/destaque", control.destaqueProdutosGET)
 router.get("/listagem", control.listagemProdutosGET)
 router.get("/pagina/:slug-:id", control.paginaProdutoGET)
 router.get("/sugestao", control.sugestaoPesquisaGET)
+router.post("/valores", control.pegarValoresGET)
+router.post("/gravar", autentificarCookie, control.gravarValoresPOST)
 
 export default router

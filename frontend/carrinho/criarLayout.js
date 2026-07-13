@@ -145,12 +145,22 @@ function criarCardProdutoCarrinho(infoProdutoCarrinho, numerado) {
     spanQtdDisponivel.className = 'quantidade-disponivel';
     spanQtdDisponivel.appendChild(document.createTextNode(`+${infoProdutoCarrinho.quantidade_disponivel} disponíveis`));
 
+    if (infoProdutoCarrinho.quantidade_disponivel <= 0) {
+        container.classList.add("opacidade-baixa")
+        
+        inputCheckbox.checked = false;
+        inputCheckbox.disabled = true;
+        
+        inputCheckbox.style.pointerEvents = "none";
+        inputCheckbox.style.cursor = "not-allowed";
+    }
+
     divQuantidades.appendChild(spanQtdEscolhida);
     divQuantidades.appendChild(spanQtdDisponivel);
 
     // Montando a div central de detalhes
     divDetalhes.appendChild(divSeparar);
-    divDetalhes.appendChild(divQuantidades);
+    divDetalhes.appendChild(divQuantidades); 
 
     // 3. Seção de Preços
     const secaoPrecos = document.createElement('div');
