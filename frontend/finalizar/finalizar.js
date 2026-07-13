@@ -20,21 +20,28 @@ const botaoFinalizar = document.getElementById("finalizar-compra")
 const alertaDeErro = document.getElementById("alerta-de-erro")
 const blocoDeErro = document.querySelector(".alerta-de-erro")
 
-console.log(produtos)
-
 botaoFinalizar.addEventListener("click", async() => {
 
     blocoDeErro.style.display = "none";
 
-    realizarCompra(produtos)
+    const response = await realizarCompra(produtos)
     
-/*     if (!response.ok) {
+    if (!response.ok) {
         const mensagemErro = result.errors?.[0]?.message || result.message || "Ocorreu um erro inesperado.";
 
         alertaDeErro.textContent = mensagemErro;
         blocoDeErro.style.display = "flex";
         return;
-    } */
+    }
+
+    sessionStorage.setItem("notificacao", JSON.stringify({
+        mensagem: "compra concluído com sucesso! Cheque ela em 'minhas compras'",
+        tipo: "sucesso"
+    }));
+
+    sessionStorage.removeItem("checkout")
+
+    window.location.href = "http://localhost:5500/frontend/index/index.html";
 })
 
 

@@ -59,3 +59,16 @@ export const deletarProdutoCarrinho = async (usuario_id, produto_id) => {
 
     return result;
 }
+
+export const deletarProdutosCarrinho = async (client, idsBuscar, idUsuario) => {
+    const result = await client.query(
+        `
+        DELETE FROM carrinho_items
+        WHERE usuario_id = $1
+          AND produto_id = ANY($2)
+        `,
+        [idUsuario, idsBuscar]
+    );
+
+    return result;
+}

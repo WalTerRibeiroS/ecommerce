@@ -19,6 +19,7 @@ export async function renderizarLayout(){
     if(infoProdutosCarrinho.length === 0) {
         
         divResumoCompra.replaceChildren()
+        sectionCardCarrinho.replaceChildren()
 
         const avisoVazioContainer = document.querySelector(".avisos-vazio-container")
         avisoVazioContainer.style.display = "flex"
@@ -28,6 +29,7 @@ export async function renderizarLayout(){
         btnCarrinhoVazio.addEventListener("click", () => {
             window.location.href = "http://localhost:5500/frontend/produtos/produtos.html"
         })
+
     }else {
 
     sectionCardCarrinho.replaceChildren()
@@ -359,7 +361,6 @@ async function criarCardResumoCompra() {
     botaoFinalizar.addEventListener("click", () => {
 
         const produtosSelecionadosProcessados = produtosSelecionados.map(({ desconto_percentual, frete, imagem_path, nome, preco, quantidade_disponivel, slug, ... resto}) => resto)
-        console.log(produtosSelecionadosProcessados)
 
         sessionStorage.setItem(
             "checkout",

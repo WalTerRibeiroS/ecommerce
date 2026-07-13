@@ -1,5 +1,7 @@
 export async function pegarDadosComprados(dados){
     
+    console.log(dados)/* id e quantidade do produtos */
+
     const response = await fetch("http://localhost:3000/api/v1/produtos/valores", {
         method: "POST",
         credentials: "include",
@@ -10,6 +12,8 @@ export async function pegarDadosComprados(dados){
     }); 
     
     const result = await response.json();
+
+    console.log(result)
     return result
 }
 
@@ -27,6 +31,5 @@ export async function realizarCompra(produtos) {
     
     const result = await response.json();
 
-    console.log(result)
-    return result
+    return response
 }

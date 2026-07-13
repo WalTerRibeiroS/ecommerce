@@ -1,7 +1,9 @@
+import pool from "../../config/db.js"
 import { AppError } from "../../utils/errors.js"
 import baseLogger from "../../utils/logger.js"
 import * as model from "./model.js"
 import { criarPedido, registrarItemsPedido } from "../pedidos/model.js"
+import { deletarProdutosCarrinho } from "../carrinho/model.js"
 import {validationError } from "../../utils/errors.js" 
 import { formatarNumeroQuebrado } from "../../../frontend/compartilhados/formatarNumeroQuebrado.js"
 
@@ -166,49 +168,66 @@ export const pegarValores = async (idsBuscar, produtos) => {
 }
 
 export const gravarValores = async (idUsuario, produtos) => {
-    logger.debug("entrando")
 
-    const produtosOrdenado = produtos.sort((a, b) => a.id - b.id)
-    const produtosObjeto = produtosOrdenado.reduce((acc, item) => {
-        acc[item.id] = item.quantidade;
-        return acc
-    }, {})
-    
-    const idsBuscar = Object.keys(produtosObjeto)
-    const quantidades = produtosOrdenado.map(p => p.quantidade)
+    const client = await pool.connect();
 
-    //query q reduz/valida estoque
+    try {
 
-    const resultado = await model.reduzirEstoque(idsBuscar, quantidades)
+        await client.query("BEGIN");
 
-    if (resultado !== idsBuscar.length){
-        throw new AppError(404, "Estoque insuficiente para o pedido")
-        return
-    } 
-   
-    //criando pedido
+        const produtosOrdenado = produtos.sort((a, b) => a.id - b.id);
 
-    const { totalBrutoSemDesconto, totalEnvio, totalDescontado, total } = await pegarValores(idsBuscar, produtos)
+        const produtosObjeto = produtosOrdenado.reduce((acc, item) => {
+            acc[item.id] = item.quantidade;
+            return acc;
+        }, {});
 
-    const totalBrutoFormatado = formatarNumeroQuebrado(totalBrutoSemDesconto);
-    const totalFreteFormatado = formatarNumeroQuebrado(totalEnvio);
-    const totalDescontadoFormatado = formatarNumeroQuebrado(totalDescontado);
-    const totalFormatado = formatarNumeroQuebrado(total);
+        const idsBuscar = Object.keys(produtosObjeto);
+        const quantidades = produtosOrdenado.map(p => p.quantidade);
 
-    const novoPedido = await criarPedido(idUsuario, totalBrutoFormatado, totalFreteFormatado, totalDescontadoFormatado, totalFormatado)
-    const idPedido = novoPedido.id
+        const resultado = await model.reduzirEstoque(client, idsBuscar, quantidades);
 
-    //inserindo produtos no itens_pedidos
+        if (resultado !== idsBuscar.length) {
+            throw new AppError(404, "Estoque insuficiente.");
+        }
 
-    const dados = await model.pegarDadosProdutos(idsBuscar)
-    const precos = dados.map(d => d.preco)
-    const nomes = dados.map(d => d.nome)
+        const {
+            totalBrutoSemDesconto,
+            totalEnvio,
+            totalDescontado,
+            total
+        } = await pegarValores(idsBuscar, produtos);
 
-    await registrarItemsPedido(idPedido, idsBuscar, quantidades, precos, nomes)
- 
-    return {
-        idPedido: idPedido,
-        total: totalFormatado,
-        status: "sucesso"
+        const totalBrutoFormatado = formatarNumeroQuebrado(totalBrutoSemDesconto);
+        const totalFreteFormatado = formatarNumeroQuebrado(totalEnvio);
+        const totalDescontadoFormatado = formatarNumeroQuebrado(totalDescontado);
+        const totalFormatado = formatarNumeroQuebrado(total);
+
+        const idPedido = await criarPedido(client, idUsuario, totalBrutoFormatado, totalFreteFormatado, totalDescontadoFormatado, totalFormatado);
+
+        const dados = await model.pegarDadosProdutos(client, idsBuscar);
+
+        const precos = dados.map(d => d.preco);
+        const nomes = dados.map(d => d.nome);
+
+        await registrarItemsPedido(client, idPedido, idsBuscar, quantidades, precos, nomes);
+
+        await deletarProdutosCarrinho(client, idsBuscar, idUsuario);
+
+        await client.query("COMMIT");
+
+        return {
+            idPedido,
+            total: totalFormatado,
+            status: "sucesso"
+        };
+
+    } catch (err) {
+
+        await client.query("ROLLBACK");
+        throw err;
+
+    } finally {
+        client.release();
     }
 }

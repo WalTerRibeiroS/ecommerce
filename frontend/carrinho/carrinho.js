@@ -4,6 +4,7 @@ import { renderizarLayout, divResumoCompra } from "./criarLayout.js";
 
 const blocoDeAvisoLogado = document.querySelector(".avisos-logado-container")
 
+
 verificarUsuarioLogado({
     pagina: "carrinho",
     onNaoLogado: () => {

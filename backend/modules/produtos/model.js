@@ -205,9 +205,9 @@ export const pegarValoresProdutos = async (idsBuscar) => {
     return result.rows[0]?.produtos || [];
 }
 
-export const pegarDadosProdutos = async (idsBuscar) => {
+export const pegarDadosProdutos = async (client, idsBuscar) => {
     
-    const result = await pool.query(
+    const result = await client.query(
         `SELECT json_agg(
             json_build_object(
                 'id', p.id,
@@ -224,8 +224,9 @@ export const pegarDadosProdutos = async (idsBuscar) => {
     return result.rows[0]?.produtos || [];
 }
 
-export const reduzirEstoque = async (idsBuscar, quantidades) => {
-    const result = await pool.query(
+export const reduzirEstoque = async (client, idsBuscar, quantidades) => {
+
+    const result = await client.query(
         `
         UPDATE produtos p
 

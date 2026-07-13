@@ -91,6 +91,7 @@ export const gravarValoresPOST = asyncHandler(async(req, res) => {
     const resultado = await services.gravarValores(idUsuario, produtos)
     
     logger.info("saindo")
+    
     res.status(201).json({
         mensagem: "Pedido realizado com sucesso!",
         dados: resultado
