@@ -4,7 +4,10 @@ const allowedOrigins = ENV.NODE_ENV === "producao"
     ? [ENV.FRONTEND_FINALIZADA_URL]
     : [
         ENV.BACKEND_URL,
-        ENV.FRONTEND_URL
+        ENV.FRONTEND_URL,
+        "http://localhost:5500", 
+        "http://127.0.0.1:5500",
+        "http://localhost:3000"
     ]
 
 export const corsOrigins = {
