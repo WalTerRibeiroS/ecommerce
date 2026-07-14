@@ -42,5 +42,12 @@ app .use(express.json())
 
     .use(errorMiddleware)
 
+app.get("/", (req, res) => {
+    res.status(200).json({ 
+        status: "OK",
+        mensagem: "Backend está online e respirando!" 
+    });
+});
+
 export default app;
     

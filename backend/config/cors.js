@@ -1,4 +1,4 @@
-import { ENV } from "./env.js"
+/* import { ENV } from "./env.js"
 
 const allowedOrigins = ENV.NODE_ENV === "producao"
     ? [ENV.FRONTEND_FINALIZADA_URL]
@@ -19,6 +19,18 @@ export const corsOrigins = {
         } else{
             callback(new Error("Bloqueado pelo CORS"));
         }
+    },
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+    credentials: true,
+    optionsSuccessStatus: 200
+}; */
+
+import { ENV } from "./env.js"
+
+export const corsOrigins = {
+    origin: (origin, callback) => {
+        // MODO DEBUG TEMPORÁRIO: Aceita absolutamente qualquer origem
+        callback(null, true); 
     },
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
     credentials: true,
