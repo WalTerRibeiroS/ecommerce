@@ -53,7 +53,7 @@ const botoesLogout = document.querySelectorAll(".botao-logout");
 botoesLogout.forEach(botao => {
     botao.addEventListener("click", async () => {
     
-        await fetch("http://localhost:3000/api/v1/auth/logout", {
+        await fetch("https://ecommerce-meu.up.railway.app/api/v1/auth/logout", {
             method: "POST",
             credentials: "include"
         });

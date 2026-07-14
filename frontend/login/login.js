@@ -14,7 +14,7 @@ formularioDeLogin.addEventListener("submit", async (event) => {
         senha: document.getElementById("senha").value
     };
 
-        const response = await fetch("http://localhost:3000/api/v1/auth/login", {
+        const response = await fetch("https://ecommerce-meu.up.railway.app/api/v1/auth/login", {
         method: "POST",
         credentials: "include",
         headers: {

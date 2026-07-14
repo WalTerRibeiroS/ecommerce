@@ -26,7 +26,7 @@ formularioDeRegistro.addEventListener("submit", async (event) => {
         senha: document.getElementById("senha").value
     };
 
-    const response = await fetch("http://localhost:3000/api/v1/auth/registrar", {
+    const response = await fetch("https://ecommerce-meu.up.railway.app/api/v1/auth/registrar", {
         method: "POST",
         credentials: "include",
         headers: {

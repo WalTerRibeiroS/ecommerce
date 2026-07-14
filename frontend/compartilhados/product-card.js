@@ -22,7 +22,7 @@ export function criarCardProduto(produto){
 
     const imagem = document.createElement("img");
     imagem.classList.add("card-imagem");
-    imagem.src = `http://localhost:3000${produto.imagem_path}`;
+    imagem.src = `https://ecommerce-meu.up.railway.app${produto.imagem_path}`;
     imagem.alt = produto.nome;
 
     imagemContainer.append(imagem)

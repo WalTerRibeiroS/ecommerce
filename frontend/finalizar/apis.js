@@ -2,7 +2,7 @@ export async function pegarDadosComprados(dados){
     
     console.log(dados)/* id e quantidade do produtos */
 
-    const response = await fetch("http://localhost:3000/api/v1/produtos/valores", {
+    const response = await fetch("https://ecommerce-meu.up.railway.app/api/v1/produtos/valores", {
         method: "POST",
         credentials: "include",
         headers: {
@@ -20,7 +20,7 @@ export async function pegarDadosComprados(dados){
 export async function realizarCompra(produtos) {
     console.log(produtos)
     
-    const response = await fetch("http://localhost:3000/api/v1/produtos/gravar", {
+    const response = await fetch("https://ecommerce-meu.up.railway.app/api/v1/produtos/gravar", {
         method: "POST",
         credentials: "include",
         headers: {

@@ -13,7 +13,7 @@ export async function chamarAPI(paginaAtual) {
     textoBusca.textContent = busca ? `Você pesquisou: ${busca}` :  "" 
 
     const response = await fetch(
-        `http://localhost:3000/api/v1/produtos/listagem?ordenar=${ordenacao}&limite=${limite}&busca=${encodeURIComponent(busca ?? "")}&pagina=${paginaAtual}&preco_min=${precoMin}&preco_max=${precoMax}`
+        `https://ecommerce-meu.up.railway.app/api/v1/produtos/listagem?ordenar=${ordenacao}&limite=${limite}&busca=${encodeURIComponent(busca ?? "")}&pagina=${paginaAtual}&preco_min=${precoMin}&preco_max=${precoMax}`
     );
 
     const data = await response.json();

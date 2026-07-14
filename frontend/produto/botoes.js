@@ -25,7 +25,7 @@ function botaoComprar() {
             quantidade: quantidade
         }
 
-        const response = await fetch("http://localhost:3000/api/v1/carrinho/adicionar", {
+        const response = await fetch("https://ecommerce-meu.up.railway.app/api/v1/carrinho/adicionar", {
             method: "POST",
             credentials: "include",
             headers: {
@@ -60,7 +60,7 @@ function botaoComprar() {
             quantidade: quantidade
         }]
 
-        const response = await fetch("http://localhost:3000/api/v1/produtos/valores", {
+        const response = await fetch("https://ecommerce-meu.up.railway.app/api/v1/produtos/valores", {
             method: "POST",
             credentials: "include",
             headers: {
