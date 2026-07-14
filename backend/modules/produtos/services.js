@@ -5,7 +5,7 @@ import * as model from "./model.js"
 import { criarPedido, registrarItemsPedido } from "../pedidos/model.js"
 import { deletarProdutosCarrinho } from "../carrinho/model.js"
 import {validationError } from "../../utils/errors.js" 
-import { formatarNumeroQuebrado } from "../../../frontend/compartilhados/formatarNumeroQuebrado.js"
+import { formatarNumeroQuebrado } from "../../utils/formatarNumeroQuebrado.js"
 
 const logger = baseLogger.child({ layer: "services" })
 //logger.debug("Entrando ")
