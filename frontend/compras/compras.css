@@ -3,6 +3,43 @@
     grid-template-columns: 1fr;
     gap: var(--spacing-xl);
     align-items: start;
+    place-items: center;
+}
+
+/* ==========================
+   AVISOS
+========================== */
+
+.avisos-logado-container, .avisos-vazio-container {
+    display: none; /* escondidos por enquanto */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+
+    font-size: var(--font-xl);
+    font-weight: bold;
+
+    gap: var(--spacing-lg);
+    background-color: white;
+
+    padding: var(--spacing-lg);
+
+}
+
+.ir-para {
+    padding: var(--spacing-md) var(--spacing-md);
+    font-size: var(--font-md);
+    border-radius: var(--radius-sm);
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+
+    background-color: var(--cor-secundaria);
+}
+
+.ir-para:active {
+    background-color: var(--cor-secundaria-click);
 }
 
 /* ==========================
@@ -14,6 +51,8 @@
     border-radius: var(--radius-sm);
     box-shadow: var(--shadow-sm);
     overflow: hidden;
+
+    width: 800px;;
 }
 
 .grupo-pedidos-data {
