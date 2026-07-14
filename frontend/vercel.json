@@ -1,0 +1,44 @@
+{
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/index/index.html"
+    },
+    {
+      "source": "/produtos",
+      "destination": "/produtos/produtos.html"
+    },
+    {
+      "source": "/produto",
+      "destination": "/produto/produto.html"
+    },
+    {
+      "source": "/carrinho",
+      "destination": "/carrinho/carrinho.html"
+    },
+    {
+      "source": "/login",
+      "destination": "/login/login.html"
+    },
+    {
+      "source": "/registrar",
+      "destination": "/registrar/registrar.html"
+    },
+    {
+      "source": "/admin",
+      "destination": "/admin/admin.html"
+    },
+    {
+      "source": "/compras",
+      "destination": "/compras/compras.html"
+    },
+    {
+      "source": "/finalizar",
+      "destination": "/finalizar/finalizar.html"
+    },
+    {
+      "source": "/perfil",
+      "destination": "/perfil/perfil.html"
+    }
+  ]
+}
