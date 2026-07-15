@@ -44,7 +44,7 @@ function botaoComprar() {
             return;
         }
         
-        window.location.href = "http://localhost:5500/frontend/carrinho/carrinho.html"
+        window.location.href = "https://ecommerce-ten-weld-12.vercel.app/frontend/carrinho/carrinho.html"
     })
     
     comprarBotao.addEventListener("click", async () => {
@@ -86,7 +86,7 @@ function botaoComprar() {
             JSON.stringify(dados)
         );
         
-        window.location.href = "http://localhost:5500/frontend/finalizar/finalizar.html"
+        window.location.href = "https://ecommerce-ten-weld-12.vercel.app/frontend/finalizar/finalizar.html"
     })
 
 }

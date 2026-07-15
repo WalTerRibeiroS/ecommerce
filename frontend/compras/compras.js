@@ -4,7 +4,7 @@ import { iniciarBarraPesquisa } from "../header/header.js";
 const blocoDeAvisoLogado = document.querySelector(".avisos-logado-container")
 
 blocoDeAvisoLogado.addEventListener("click", () => {
-    window.location.href = "http://localhost:5500/frontend/login/login.html"
+    window.location.href = "https://ecommerce-ten-weld-12.vercel.app/frontend/login/login.html"
 })
 
 verificarUsuarioLogado({
@@ -37,7 +37,7 @@ function criarLayout(pedidos) {
         const btnCarrinhoVazio = document.getElementById("btn-ir-produtos")
 
         btnCarrinhoVazio.addEventListener("click", () => {
-            window.location.href = "http://localhost:5500/frontend/produtos/produtos.html"
+            window.location.href = "https://ecommerce-ten-weld-12.vercel.app/frontend/produtos/produtos.html"
         })
     }
 
@@ -152,7 +152,7 @@ botaoVerCompra.addEventListener("click", (event) => {
     const id = botao.dataset.id
     const slug = botao.dataset.slug
 
-    window.location.href = `http://localhost:5500/frontend/produto/produto.html?slug=${slug}&id=${id}`
+    window.location.href = `https://ecommerce-ten-weld-12.vercel.app/frontend/produto/produto.html?slug=${slug}&id=${id}`
 })
 
 iniciarBarraPesquisa()

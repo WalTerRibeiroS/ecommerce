@@ -10,7 +10,7 @@ export async function renderizarLayout(){
     const btnLoginAuten = document.getElementById("btn-ir-login")
     
     btnLoginAuten.addEventListener("click", () => {
-        window.location.href = "http://localhost:5500/frontend/login/login.html"
+        window.location.href = "https://ecommerce-ten-weld-12.vercel.app/frontend/login/login.html"
     })
     //
 
@@ -27,7 +27,7 @@ export async function renderizarLayout(){
         const btnCarrinhoVazio = document.getElementById("btn-ir-produtos")
 
         btnCarrinhoVazio.addEventListener("click", () => {
-            window.location.href = "http://localhost:5500/frontend/produtos/produtos.html"
+            window.location.href = "https://ecommerce-ten-weld-12.vercel.app/frontend/produtos/produtos.html"
         })
 
     }else {
@@ -81,7 +81,7 @@ function criarCardProdutoCarrinho(infoProdutoCarrinho, numerado) {
         const id = infoProdutoCarrinho.id
         const slug = infoProdutoCarrinho.slug
 
-        window.location.href = `http://localhost:5500/frontend/produto/produto.html?slug=${slug}&id=${id}`
+        window.location.href = `https://ecommerce-ten-weld-12.vercel.app/frontend/produto/produto.html?slug=${slug}&id=${id}`
     })
 
     secaoImagens.appendChild(inputCheckbox);
@@ -105,7 +105,7 @@ function criarCardProdutoCarrinho(infoProdutoCarrinho, numerado) {
         const id = infoProdutoCarrinho.id
         const slug = infoProdutoCarrinho.slug
 
-        window.location.href = `http://localhost:5500/frontend/produto/produto.html?slug=${slug}&id=${id}`
+        window.location.href = `https://ecommerce-ten-weld-12.vercel.app/frontend/produto/produto.html?slug=${slug}&id=${id}`
     })
 
     const btnRemover = document.createElement('button');
@@ -367,7 +367,7 @@ async function criarCardResumoCompra() {
             JSON.stringify(produtosSelecionadosProcessados)
         );
         
-        window.location.href = "http://localhost:5500/frontend/finalizar/finalizar.html"
+        window.location.href = "https://ecommerce-ten-weld-12.vercel.app/frontend/finalizar/finalizar.html"
     })
 }
 

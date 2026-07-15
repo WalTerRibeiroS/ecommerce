@@ -63,6 +63,6 @@ botoesLogout.forEach(botao => {
             tipo: "sucesso"
         }));
 
-        window.location.href = "http://localhost:5500/frontend/index/index.html";
+        window.location.href = "https://ecommerce-ten-weld-12.vercel.app/frontend/index/index.html";
     })
 })

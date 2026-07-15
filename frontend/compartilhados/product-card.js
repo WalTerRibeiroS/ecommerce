@@ -12,7 +12,7 @@ export function criarCardProduto(produto){
         const id = produto.id
         const slug = produto.slug
 
-        window.location.href = `http://localhost:5500/frontend/produto/produto.html?slug=${slug}&id=${id}`
+        window.location.href = `https://ecommerce-ten-weld-12.vercel.app/frontend/produto/produto.html?slug=${slug}&id=${id}`
     })
 
     //--------- imagem ---
