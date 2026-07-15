@@ -73,7 +73,7 @@ function criarCardProdutoCarrinho(infoProdutoCarrinho, numerado) {
     labelCheck.className = 'check';
 
     const imgProduto = document.createElement('img');
-    imgProduto.src = "../../backend" + infoProdutoCarrinho.imagem_path;
+    imgProduto.src = `https://ecommerce-meu.up.railway.app${infoProdutoCarrinho.imagem_path}`;/* "../../backend" + infoProdutoCarrinho.imagem_path; */
     imgProduto.alt = infoProdutoCarrinho.nome;
 
     imgProduto.addEventListener("click", () => {

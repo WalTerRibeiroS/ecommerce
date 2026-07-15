@@ -99,7 +99,7 @@ function criarCardPedido(pedido, produto) {
 
         <div class="pedido-imagem">
 
-            <img src="${"../../backend" + produto.imagem}" alt="${produto.nome}">
+            <img src="${`https://ecommerce-meu.up.railway.app${produto.imagem}`}" alt="${produto.nome}">
 
         </div>
 

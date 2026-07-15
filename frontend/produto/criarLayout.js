@@ -30,7 +30,7 @@ function criarGaleria(imagens) {
 
         const img = document.createElement("img")
 
-        const path = "../../backend" + imagem /* perigoso caso eu mude os arquivos de ordem!!! */
+        const path =  `https://ecommerce-meu.up.railway.app${imagem}`;/* "../../backend" + imagem */ /* perigoso caso eu mude os arquivos de ordem!!! `https://ecommerce-meu.up.railway.app${produto.imagem_path}`;*/
         img.src = path
         img.classList.add("thumbs")
 
