@@ -18,9 +18,7 @@ export const usuarioPOST = asyncHandler(async(req, res) => {
         sameSite: "lax"
     })
 
-    /* const { senha_hash, ...usuarioSeguro } = novoRegistro  <-- rest (pega o resto sem senha_hash*/
-
-    const usuarioCompleto = { ...usuario, refreshToken }  /* spread (joga tudo da variavel + alguma outra coisa, resultado cria um novo objeto) */
+    const usuarioCompleto = { ...usuario, refreshToken }
 
     logger.info("Pessoa registrada com sucesso", { nome, sobrenome, email })
     res.status(201).json({ usuarioCompleto, accessToken })

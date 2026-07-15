@@ -20,7 +20,7 @@ export const usuarioRegistrar = async(nome, sobrenome, email, senha) => {
 
     const novoRegistro = await registrarUsuario(nome, sobrenome, email, senha)
 
-    const { senha_hash, ...usuarioSeguro } = novoRegistro //separa a senha do usuario final (q é usado durante todo fluxo)
+    const { senha_hash, ...usuarioSeguro } = novoRegistro
 
     const accessToken = jwt.sign(
         { id: usuarioSeguro.id, role: usuarioSeguro.role},
