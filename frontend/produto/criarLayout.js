@@ -1,13 +1,3 @@
-/* 
-desconto_percentual
-descricao
-frete
-id
-imagens
-preco
-quantidade_disponivel
-*/
-
 import { gerarQuantidadeDeAvalicoes } from "../compartilhados/quantidade-de-avaliacoes.js"
 import { gerarStarRating } from "../compartilhados/star-rating.js"
 import { formatarMoeda } from "../compartilhados/formatarMoeda.js"
