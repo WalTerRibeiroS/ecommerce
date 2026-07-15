@@ -6,7 +6,7 @@ import { atualizarTelaFinalizar } from "./atualizarTela.js";
 const checkout = sessionStorage.getItem("checkout");
 
 if (!checkout) {
-    window.location.href = "https://ecommerce-ten-weld-12.vercel.app/frontend/carrinho/carrinho.html";
+    window.location.href = "https://ecommerce-ten-weld-12.vercel.app/carrinho";
 }
 
 const produtos = JSON.parse(
@@ -41,7 +41,7 @@ botaoFinalizar.addEventListener("click", async() => {
 
     sessionStorage.removeItem("checkout")
 
-    window.location.href = "https://ecommerce-ten-weld-12.vercel.app/frontend/index/index.html";
+    window.location.href = "https://ecommerce-ten-weld-12.vercel.app/";
 })
 
 

@@ -33,7 +33,7 @@ formularioDeLogin.addEventListener("submit", async (event) => {
         return;
     }
 
-/*    sessionStorage.setItem("notificacao", JSON.stringify({
+   sessionStorage.setItem("notificacao", JSON.stringify({
         mensagem: "Login concluído com sucesso!",
         tipo: "sucesso"
     }));
@@ -41,8 +41,8 @@ formularioDeLogin.addEventListener("submit", async (event) => {
     if (document.referrer) {
         window.history.back();
     } else {
-        window.location.href = "https://ecommerce-ten-weld-12.vercel.app/frontend/index/index.html";
-    } */
+        window.location.href = "https://ecommerce-ten-weld-12.vercel.app/";
+    }
 })
 
 /* ----------- botao do olho ------ */

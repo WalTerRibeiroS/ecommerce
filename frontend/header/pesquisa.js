@@ -11,5 +11,5 @@ export function pesquisar(busca) {
 
     const buscaFormatada = semAcentos(busca);
 
-    window.location.href = `https://ecommerce-ten-weld-12.vercel.app/frontend/produtos/produtos.html?busca=${encodeURIComponent(buscaFormatada)}`;
+    window.location.href = `https://ecommerce-ten-weld-12.vercel.app/produtos?busca=${encodeURIComponent(buscaFormatada)}`;
 }
