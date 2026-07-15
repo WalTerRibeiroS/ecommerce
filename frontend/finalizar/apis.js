@@ -1,6 +1,4 @@
 export async function pegarDadosComprados(dados){
-    
-    console.log(dados)/* id e quantidade do produtos */
 
     const response = await fetch("https://ecommerce-meu.up.railway.app/api/v1/produtos/valores", {
         method: "POST",

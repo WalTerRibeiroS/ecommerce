@@ -73,7 +73,7 @@ function criarCardProdutoCarrinho(infoProdutoCarrinho, numerado) {
     labelCheck.className = 'check';
 
     const imgProduto = document.createElement('img');
-    imgProduto.src = `https://ecommerce-meu.up.railway.app${infoProdutoCarrinho.imagem_path}`;/* "../../backend" + infoProdutoCarrinho.imagem_path; */
+    imgProduto.src = `https://ecommerce-meu.up.railway.app${infoProdutoCarrinho.imagem_path}`;
     imgProduto.alt = infoProdutoCarrinho.nome;
 
     imgProduto.addEventListener("click", () => {
@@ -115,7 +115,6 @@ function criarCardProdutoCarrinho(infoProdutoCarrinho, numerado) {
     btnRemover.addEventListener("click", async () => {
 
         const data = btnRemover.dataset.produtoId
-        console.log("clicou")
 
         const response = await fetch("https://ecommerce-meu.up.railway.app/api/v1/carrinho/deletar", {
             method: "DELETE",

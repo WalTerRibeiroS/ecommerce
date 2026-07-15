@@ -5,7 +5,6 @@ export async function chamarSugestoesAPI(valor){
     const response = await fetch(`https://ecommerce-meu.up.railway.app/api/v1/produtos/sugestao?busca=${busca}`)
 
     const data = await response.json()
-    console.log(data)
 
     return data
 }

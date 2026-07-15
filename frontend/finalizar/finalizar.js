@@ -44,8 +44,5 @@ botaoFinalizar.addEventListener("click", async() => {
     window.location.href = "https://ecommerce-ten-weld-12.vercel.app/";
 })
 
-
-/* ao final da compra fazer sessionStorage.removeItem("checkout"); */
-
 verificarUsuarioLogado()
 iniciarBarraPesquisa()
