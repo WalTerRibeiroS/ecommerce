@@ -50,7 +50,7 @@ overlay.addEventListener("click", () => {
 
 const botoesLogout = document.querySelectorAll(".botao-logout");
 
-botao.addEventListener("click", async () => {
+botoesLogout.addEventListener("click", async () => {
     console.log("1 - clique");
 
     try {
