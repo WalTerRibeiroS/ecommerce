@@ -50,7 +50,28 @@ overlay.addEventListener("click", () => {
 
 const botoesLogout = document.querySelectorAll(".botao-logout");
 
-botoesLogout.forEach(botao => {
+botao.addEventListener("click", async () => {
+    console.log("1 - clique");
+
+    try {
+        console.log("2 - antes do fetch");
+
+        const resposta = await fetch("https://ecommerce-meu.up.railway.app/api/v1/auth/logout", {
+            method: "POST",
+            credentials: "include"
+        });
+
+        console.log("3 - depois do fetch");
+        console.log("status:", resposta.status);
+
+    } catch (erro) {
+        console.error("ERRO NO FETCH:", erro);
+    }
+
+    console.log("4 - fim");
+});
+
+/* botoesLogout.forEach(botao => {
     botao.addEventListener("click", async () => {
     
         await fetch("https://ecommerce-meu.up.railway.app/api/v1/auth/logout", {
@@ -65,4 +86,4 @@ botoesLogout.forEach(botao => {
 
         window.location.href = "https://ecommerce-ten-weld-12.vercel.app/";
     })
-})
+}) */
