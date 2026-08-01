@@ -50,11 +50,8 @@ formularioDeRegistro.addEventListener("submit", async (event) => {
         tipo: "sucesso"
     }));
 
-    if (document.referrer) {
-        window.history.back();
-    } else {
-        window.location.href = "https://ecommerce-ten-weld-12.vercel.app/";
-    }
+
+    window.location.href = "https://ecommerce-ten-weld-12.vercel.app/";
 })
 
 /* ----------- botao do olho ------ */

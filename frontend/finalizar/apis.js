@@ -11,7 +11,6 @@ export async function pegarDadosComprados(dados){
     
     const result = await response.json();
 
-    console.log(result)
     return result
 }
 
